@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "order_table")
+@Table(name = "order_detail")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,7 +37,7 @@ public class Order implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "order")
 	private List<LineItem> items;
 	
 	@Column(name = "date")

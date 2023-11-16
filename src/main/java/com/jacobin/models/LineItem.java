@@ -40,10 +40,9 @@ public class LineItem implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "cart_id")
-	private Cart cart;
-		
+	private Cart cart;		
 	
-//	@ManyToOne
-//	@JoinColumn(name = "order_id")
-//	private Order order;
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
 }

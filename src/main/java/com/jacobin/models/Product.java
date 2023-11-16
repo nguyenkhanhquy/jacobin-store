@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -29,9 +31,9 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "category_id")
-//	private Category category;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
 	
 	@Column(name = "title")
 	private String title;
@@ -44,8 +46,4 @@ public class Product implements Serializable {
 	
 	@Column(name = "price")
 	private double price;
-	
-//	@OneToOne
-//	@JoinColumn(name= "stock_id")
-//	private Stock stock;
 }

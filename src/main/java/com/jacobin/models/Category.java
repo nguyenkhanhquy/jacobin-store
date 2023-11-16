@@ -37,6 +37,6 @@ public class Category implements Serializable {
 	@Column(name = "description")
 	private String description;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "category")
 	private List<Product> product;
 }
