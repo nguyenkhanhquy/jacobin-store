@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,17 +24,21 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
     
     @Column(name = "phone")
 	private String phone;
+    
+    @Column(name = "user_name")
+	private String userName;
     
     @Column(name = "password")
 	private String password;
@@ -55,4 +61,7 @@ public class User implements Serializable {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+    
+//    @OneToMany(mappedBy = "user")
+//    private List<Order> order;
 }

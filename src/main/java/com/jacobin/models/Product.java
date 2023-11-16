@@ -1,13 +1,21 @@
 package com.jacobin.models;
 
 import java.io.Serializable;
-import java.util.Locale.Category;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "product")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,10 +24,28 @@ public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int productid;
-	private Category category;
+	@Id
+	@Column(name = "product_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int productId;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "category_id")
+//	private Category category;
+	
+	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "size")
 	private String size;
+	
+	@Column(name = "desciption")
 	private String description;
+	
+	@Column(name = "price")
 	private double price;
+	
+//	@OneToOne
+//	@JoinColumn(name= "stock_id")
+//	private Stock stock;
 }
