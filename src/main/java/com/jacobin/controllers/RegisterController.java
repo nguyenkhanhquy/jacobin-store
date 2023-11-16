@@ -13,8 +13,8 @@ import com.jacobin.data.UserDB;
 import com.jacobin.models.Role;
 import com.jacobin.models.User;
 
-@WebServlet(urlPatterns = { "/emailList" })
-public class EmailListController extends HttpServlet {
+@WebServlet(urlPatterns = { "/register" })
+public class RegisterController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,39 +24,53 @@ public class EmailListController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 
-		String url = "/index.jsp";
+		String url = "/register.jsp";
 
-		// get current action
 		String action = request.getParameter("action");
 		if (action == null) {
-			action = "join"; // default action
+			action = "join"; 
 		}
 
-		// perform action and set URL to appropriate page
 		if (action.equals("join")) {
-			url = "/index.jsp"; // the "join" page
+			url = "/register.jsp";
 		} else if (action.equals("add")) {
-			// get parameters from the request
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
+			String dateOfBirth = request.getParameter("dateOfBirth");
+			String address = request.getParameter("address");
 			String email = request.getParameter("email");
+			String phone = request.getParameter("phone");
+			String userName = request.getParameter("userName");
+			String password = request.getParameter("password");
 			
 			int roleId = 2;
 			Role role = RoleDB.selectRole(roleId);
 			
-			// store data in User object
 			User user = new User();
-			user.setEmail(email);
 			user.setFirstName(firstName);
 			user.setLastName(lastName);
+			user.setDateOfBirth(dateOfBirth);
+			user.setAddress(address);
+			user.setEmail(email);
+			user.setPhone(phone);
+			user.setUserName(userName);
+			user.setPassword(password);
 			user.setRole(role);
 
-			// validate the parameters
 			String message;
 			if (UserDB.checkExists(user.getEmail())) {
-				message = "This email address already exists.<br>" + "Please enter another email address.";
-				url = "/index.jsp";
-			} else {
+				message = "Địa chỉ Email đã được đăng ký.<br>" + "Vui lòng điền một địa chỉ Email khác.";
+				url = "/register.jsp";
+			} 
+			else if (UserDB.checkExists(user.getPhone())) {
+				message = "Số điện thoại đã được đăng ký.<br>" + "Vui lòng điền số điện thoại khác.";
+				url = "/register.jsp";
+			}
+			else if (UserDB.checkExists(user.getUserName())) {
+				message = "Tên đăng nhập đã được đăng ký.<br>" + "Vui lòng điền tên đăng nhập khác.";
+				url = "/register.jsp";
+			}
+			else {
 				message = "";
 				url = "/thanks.jsp";
 				UserDB.insert(user);
