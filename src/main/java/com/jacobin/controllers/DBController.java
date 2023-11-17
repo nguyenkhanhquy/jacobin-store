@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jacobin.data.DBUtil;
+import com.jacobin.dao.DBUtil;
 
 @WebServlet(urlPatterns = { "/createdb" })
 public class DBController extends HttpServlet {

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jacobin.data.RoleDB;
-import com.jacobin.data.UserDB;
+import com.jacobin.dao.RoleDB;
+import com.jacobin.dao.UserDB;
 import com.jacobin.models.Role;
 import com.jacobin.models.User;
 
