@@ -23,12 +23,6 @@
 		</div>
 		
 		<div>
-			<input type="radio" name="sex" value="Nam" ${user.sex eq 'Nam' ? 'checked' : ''} required>Nam
-           	<input type="radio" name="sex" value="Nữ" ${user.sex eq 'Nữ' ? 'checked' : ''}>Nữ
-           	<input type="radio" name="sex" value="Khác" ${user.sex eq 'Khác' ? 'checked' : ''}>Khác
-		</div>
-		
-		<div>
 			<input type="text" name="dateOfBirth" value="${user.dateOfBirth}" 
 			placeholder="dd/mm/yyyy" id="date_of_birth" class="text" size="30">
 		</div>

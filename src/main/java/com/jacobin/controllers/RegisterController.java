@@ -39,7 +39,6 @@ public class RegisterController extends HttpServlet {
 
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
-		String sex = req.getParameter("sex");
 		String dateOfBirth = req.getParameter("dateOfBirth");
 		String address = req.getParameter("address");
 		String email = req.getParameter("email");
@@ -53,7 +52,6 @@ public class RegisterController extends HttpServlet {
 		User user = new User();
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
-		user.setSex(sex);
 		user.setDateOfBirth(dateOfBirth);
 		user.setAddress(address);
 		user.setEmail(email);
