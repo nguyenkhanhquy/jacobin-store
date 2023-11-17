@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Đăng ký tài khoản thành công!</h1>
-	<p>Sẽ tự động chuyển về trang chủ sau 5s nữa.</p>]
+	<p>Sẽ tự động chuyển về trang chủ sau 5s nữa.</p>
 	<script>
 		setTimeout(function() {
 			window.location.href = 'home';

@@ -23,9 +23,9 @@
 		</div>
 		
 		<div>
-			<input type="radio" name="sex" value="Nam" required>Nam
-           	<input type="radio" name="sex" value="Nữ">Nữ
-           	<input type="radio" name="sex" value="Khác">Khác
+			<input type="radio" name="sex" value="Nam" ${user.sex eq 'Nam' ? 'checked' : ''}>Nam
+           	<input type="radio" name="sex" value="Nữ" ${user.sex eq 'Nữ' ? 'checked' : ''}>Nữ
+           	<input type="radio" name="sex" value="Khác" ${user.sex eq 'Khác' ? 'checked' : ''}>Khác
 		</div>
 		
 		<div>
