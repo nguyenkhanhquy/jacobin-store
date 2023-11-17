@@ -8,7 +8,7 @@ import com.jacobin.models.Role;
 
 public class RoleDB {
 
-	public static Role selectRole(int roleId) {
+	public static Role selectRoleByID(int roleId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT r FROM Role r " +
                 "WHERE r.roleId = :roleId";
@@ -16,7 +16,6 @@ public class RoleDB {
         q.setParameter("roleId", roleId);
         try {
         	Role role = q.getSingleResult();
-
             return role;
         } catch (NoResultException e) {
             return null;
