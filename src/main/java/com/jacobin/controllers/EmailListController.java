@@ -24,7 +24,7 @@ public class EmailListController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 
-		String url = "/index.jsp";
+		String url = "/WEB-INF/views/index.jsp";
 
 		// get current action
 		String action = request.getParameter("action");
@@ -34,7 +34,7 @@ public class EmailListController extends HttpServlet {
 
 		// perform action and set URL to appropriate page
 		if (action.equals("join")) {
-			url = "/index.jsp"; // the "join" page
+			url = "/WEB-INF/views/index.jsp"; // the "join" page
 		} else if (action.equals("add")) {
 			// get parameters from the request
 			String firstName = request.getParameter("firstName");
@@ -55,10 +55,10 @@ public class EmailListController extends HttpServlet {
 			String message;
 			if (UserDB.checkExists(user.getEmail())) {
 				message = "This email address already exists.<br>" + "Please enter another email address.";
-				url = "/index.jsp";
+				url = "/WEB-INF/views/index.jsp";
 			} else {
 				message = "";
-				url = "/thanks.jsp";
+				url = "/WEB-INF/views/thanks.jsp";
 				UserDB.insert(user);
 			}
 			request.setAttribute("user", user);

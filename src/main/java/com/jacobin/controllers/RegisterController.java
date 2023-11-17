@@ -24,7 +24,7 @@ public class RegisterController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 
-		String url = "/register.jsp";
+		String url = "/WEB-INF/views/register.jsp";
 
 		String action = request.getParameter("action");
 		if (action == null) {
@@ -32,7 +32,7 @@ public class RegisterController extends HttpServlet {
 		}
 
 		if (action.equals("join")) {
-			url = "/register.jsp";
+			url = "/WEB-INF/views/register.jsp";
 		} else if (action.equals("add")) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
@@ -58,21 +58,19 @@ public class RegisterController extends HttpServlet {
 			user.setRole(role);
 
 			String message;
+			url = "/WEB-INF/views/register.jsp";
 			if (UserDB.checkExists(user.getEmail())) {
 				message = "Địa chỉ Email đã được đăng ký.<br>" + "Vui lòng điền một địa chỉ Email khác.";
-				url = "/register.jsp";
 			} 
 			else if (UserDB.checkExists(user.getPhone())) {
 				message = "Số điện thoại đã được đăng ký.<br>" + "Vui lòng điền số điện thoại khác.";
-				url = "/register.jsp";
 			}
 			else if (UserDB.checkExists(user.getUserName())) {
 				message = "Tên đăng nhập đã được đăng ký.<br>" + "Vui lòng điền tên đăng nhập khác.";
-				url = "/register.jsp";
 			}
 			else {
 				message = "";
-				url = "/thanks.jsp";
+				url = "/WEB-INF/views/thanks.jsp";
 				UserDB.insert(user);
 			}
 			request.setAttribute("user", user);

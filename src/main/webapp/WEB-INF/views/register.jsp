@@ -4,8 +4,8 @@
 <html lang=vi>
 <head>
     <meta charset="UTF-8">
-    <title>Tạo tài khoản</title>
-    <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+    <title>Đăng ký tài khoản</title>
+    <link rel="stylesheet" href="resources/css/main.css" type="text/css"/>
 </head>
 <body>
     <h1>Đăng ký</h1>
@@ -55,7 +55,6 @@
 		<div>
 			<input class="btn" type ="submit" value="Đăng ký">
 		</div>
-		
     </form>
 </body>
 </html>

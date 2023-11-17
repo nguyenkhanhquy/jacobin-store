@@ -5,6 +5,7 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>jacobin-store</display-name>
 	<welcome-file-list>
+		<welcome-file>createdb</welcome-file>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

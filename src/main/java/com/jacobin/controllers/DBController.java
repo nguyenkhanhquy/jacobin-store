@@ -1,9 +1,8 @@
 package com.jacobin.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.persistence.EntityManager;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,15 +18,19 @@ public class DBController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		
-		resp.setContentType("text/html");
 
-		PrintWriter writer = resp.getWriter();
+		DBUtil.getEmFactory();
 
-		writer.println("<h1>Created Database</h1>");
+		// Forward tới trang /WEB-INF/views/homeView.jsp
+		// (Người dùng không bao giờ truy cập trực tiếp được vào các trang JSP đặt trong WEB-INF)
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/register.jsp");
 
-		writer.close();
+		dispatcher.forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		doGet(req, resp);
 	}
 }
