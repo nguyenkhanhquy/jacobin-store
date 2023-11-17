@@ -35,14 +35,14 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 
-	@Column(name = "phone")
-	private String phone;
-
 	@Column(name = "user_name")
 	private String userName;
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "phone")
+	private String phone;
 
 	@Column(name = "email")
 	private String email;
@@ -52,6 +52,9 @@ public class User implements Serializable {
 
 	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "sex")
+	private String sex;
 
 	@Column(name = "date_of_birth")
 	private String dateOfBirth;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="resources/css/main.css" type="text/css"/>
 </head>
 <body>
-    <h1>Đăng ký</h1>
+    <h1>Đăng ký tài khoản</h1>
     <p><i>${message}</i></p>
     <form action="register" method="post">
     	<input type="hidden" name="action" value="add">  
@@ -20,6 +20,12 @@
 		<div>
 			<input type="text" name="lastName" value="${user.lastName}" 
 			placeholder="Tên" id="last_name" class="text" size="30" required>
+		</div>
+		
+		<div>
+			<input type="radio" name="sex" value="Nam" required>Nam
+           	<input type="radio" name="sex" value="Nữ">Nữ
+           	<input type="radio" name="sex" value="Khác">Khác
 		</div>
 		
 		<div>
