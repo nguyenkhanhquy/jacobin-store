@@ -48,7 +48,7 @@ public class RegisterController extends HttpServlet {
 		String password = req.getParameter("password");
 
 		int roleId = 2;
-		Role role = RoleDB.selectRole(roleId);
+		Role role = RoleDB.selectRoleByID(roleId);
 
 		User user = new User();
 		user.setFirstName(firstName);

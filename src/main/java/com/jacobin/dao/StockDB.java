@@ -24,7 +24,7 @@ public class StockDB {
         }       
     }
 	
-	public static Stock selectStock(int stockId) {
+	public static Stock selectStockByID(int stockId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT s FROM Stock s " +
                 "WHERE s.stockId = :stockId";
