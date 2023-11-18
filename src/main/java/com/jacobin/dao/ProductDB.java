@@ -1,5 +1,7 @@
 package com.jacobin.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -63,6 +65,20 @@ public class ProductDB {
         try {
             Product product = q.getSingleResult();
             return product;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static List<Product> selectAllProduct() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT p FROM Product p";
+        TypedQuery<Product> q = em.createQuery(qString, Product.class);
+        try {
+            List<Product> list = q.getResultList();
+            return list;
         } catch (NoResultException e) {
             return null;
         } finally {

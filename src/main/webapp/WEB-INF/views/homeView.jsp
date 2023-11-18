@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -86,9 +87,9 @@
             <!-- Menu left -->
             <div class="col-lg-3">
                 <div class="list-group ">
-                    <a href="#" class="list-group-item list-group-item-action">Thời trang nam </a> 
-                    <a href="#" class="list-group-item list-group-item-action">Thời trang nữ</a> 
-                    <a href="#" class="list-group-item list-group-item-action">Dành cho bé</a>
+                	<c:forEach items="${ListC}" var="c">
+                		<a href="#" class="list-group-item list-group-item-action">${c.name}</a>
+                	</c:forEach>
                 </div>
             </div>
             <!-- End Menu left -->
@@ -125,74 +126,23 @@
                 <!-- End Slider -->
                 <!-- Products -->
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="resources/img/product/1.png" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Áo thun Pro-S1</a>
-                                </h4>
-                                <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733;
-                                    &#9733; &#9734;</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="resources/img/product/2.png" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Áo thun Pro-S1</a>
-                                </h4>
-                                <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733;
-                                    &#9733; &#9734;</small>
+                    <c:forEach items="${ListP}" var="p">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="#"><img class="card-img-top" src="${p.image}" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">${p.name}</a>
+                                    </h4>
+                                    <h5><fmt:formatNumber type="number" value="${p.price}" pattern="#,##0" /> VNĐ</h5>
+                                    <p class="card-text">${p.description}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="resources/img/product/3.png" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Áo thun Pro-S1</a>
-                                </h4>
-                                <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733;
-                                    &#9733; &#9734;</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="resources/img/product/1.png" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Áo thun Pro-S1</a>
-                                </h4>
-                                <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733;
-                                    &#9733; &#9734;</small>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach> 
                 </div>
                 <!-- End Products -->
             </div>
