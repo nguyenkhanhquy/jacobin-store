@@ -2,7 +2,6 @@ package com.jacobin.controllers;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +22,10 @@ public class HomeController extends HttpServlet {
 		
 		DBUtil.getEmFactory();
 		
+		
+		
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/homeView.html");
+				.getRequestDispatcher("/WEB-INF/views/homeView.jsp");
 
 		dispatcher.forward(req, resp);
 	}

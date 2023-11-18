@@ -1,5 +1,6 @@
-<!--<%@ page language="java" contentType="text/html; charset=UTF-8" 
-	pageEncoding="UTF-8" %>-->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -19,9 +20,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img
-                    src="resources/img/logo/logo.jpg"
-                    alt="Bootstrap" height="24">
+            <a class="navbar-brand" href="#">
+				<img src="resources/img/logo/logo.jpg" alt="logo" width="150">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -49,8 +49,19 @@
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
                         aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
-                    <a class="btn btn-primary" style="white-space: nowrap;" href="register"> Đăng ký </a>
+                    <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
+                    <c:choose>
+    					<c:when test="${not empty sessionScope.loginedUser}">
+					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="#">
+					            <c:out value='${loginedUser.firstName}'/>
+					        </a>
+					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="logout">Đăng xuất</a>
+    					</c:when>
+					    <c:otherwise>
+					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="login">Đăng nhập</a>
+					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="register">Đăng ký</a>
+					    </c:otherwise>
+					</c:choose>
                 </form>
             </div>
         </div>
@@ -63,10 +74,9 @@
             <!-- Menu left -->
             <div class="col-lg-3">
                 <div class="list-group ">
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Thời trang nam </a> <a href="#" class="list-group-item list-group-item-action">Thời trang
-                        nữ</a> <a href="#" class="list-group-item list-group-item-action">Dành
-                        cho bé</a>
+                    <a href="#" class="list-group-item list-group-item-action">Thời trang nam </a> 
+                    <a href="#" class="list-group-item list-group-item-action">Thời trang nữ</a> 
+                    <a href="#" class="list-group-item list-group-item-action">Dành cho bé</a>
                 </div>
             </div>
             <!-- End Menu left -->
@@ -128,8 +138,7 @@
                                     <a href="#">Áo thun Pro-S1</a>
                                 </h4>
                                 <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-                                    màu sắc tốt.</p>
+                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733;
@@ -147,8 +156,7 @@
                                     <a href="#">Áo thun Pro-S1</a>
                                 </h4>
                                 <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-                                    màu sắc tốt.</p>
+                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733;
@@ -165,8 +173,7 @@
                                     <a href="#">Áo thun Pro-S1</a>
                                 </h4>
                                 <h5>50.000</h5>
-                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-                                    màu sắc tốt.</p>
+                                <p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ màu sắc tốt.</p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733;
@@ -191,7 +198,7 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Liên hệ</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Blogs</a></li>
         </ul>
-        <p class="text-center text-muted">© 2023 Jacobin.com, Inc</p>
+        <p class="text-center text-muted">&copy; 2023 Jacobin.com</p>
     </footer>
     <!-- End footer -->
 

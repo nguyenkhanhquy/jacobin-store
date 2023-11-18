@@ -28,15 +28,15 @@ public class RegisterController extends HttpServlet {
 
 		dispatcher.forward(req, resp);
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
+		
 		req.setCharacterEncoding("UTF-8");
-
+		
 		String url = "/WEB-INF/views/customer/registerView.jsp";
-
+		
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
 		String dateOfBirth = req.getParameter("dateOfBirth");
@@ -46,10 +46,10 @@ public class RegisterController extends HttpServlet {
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("password");
 		String passwordAgain = req.getParameter("passwordAgain");
-
+		
 		int roleId = 2;
 		Role role = RoleDB.selectRoleByID(roleId);
-
+		
 		User user = new User();
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
@@ -60,7 +60,7 @@ public class RegisterController extends HttpServlet {
 		user.setUserName(userName);
 		user.setPassword(password);
 		user.setRole(role);
-
+		
 		String message;
 		if (UserDB.checkExists(user.getEmail())) {
 			message = "Địa chỉ Email đã tồn tại.<br>" + "Vui lòng điền một địa chỉ Email khác.";
@@ -75,10 +75,9 @@ public class RegisterController extends HttpServlet {
 			url = "/WEB-INF/views/customer/successView.jsp";
 			UserDB.insert(user);
 		}
-
+		
 		req.setAttribute("user", user);
 		req.setAttribute("message", message);
-
 		getServletContext().getRequestDispatcher(url).forward(req, resp);
 	}
 }

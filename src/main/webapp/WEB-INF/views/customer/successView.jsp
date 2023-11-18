@@ -4,15 +4,15 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Đăng ký thành công</title>
+<title>Thành công</title>
 </head>
 <body>
-	<h1>Đăng ký tài khoản thành công!</h1>
-	<p>Sẽ tự động chuyển về trang chủ sau 3s.</p>
+	<h1>Thao tác thành công!</h1>
+	<p>Sẽ tự động chuyển về trang chủ sau 2s.</p>
 	<script>
 		setTimeout(function() {
 			window.location.href = 'home';
-		}, 3000);
+		}, 2000);
 	</script>
 	<a href="home"><button type="button">Trang chủ</button></a>
 </body>
