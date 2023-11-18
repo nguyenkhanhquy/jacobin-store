@@ -39,13 +39,13 @@ public class RegisterController extends HttpServlet {
 
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
-		String sex = req.getParameter("sex");
 		String dateOfBirth = req.getParameter("dateOfBirth");
 		String address = req.getParameter("address");
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("password");
+		String passwordAgain = req.getParameter("passwordAgain");
 
 		int roleId = 2;
 		Role role = RoleDB.selectRoleByID(roleId);
@@ -53,7 +53,6 @@ public class RegisterController extends HttpServlet {
 		User user = new User();
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
-		user.setSex(sex);
 		user.setDateOfBirth(dateOfBirth);
 		user.setAddress(address);
 		user.setEmail(email);
@@ -69,6 +68,8 @@ public class RegisterController extends HttpServlet {
 			message = "Số điện thoại đã tồn tại.<br>" + "Vui lòng điền số điện thoại khác.";
 		} else if (UserDB.checkExists(user.getUserName())) {
 			message = "Tên đăng nhập đã tồn tại.<br>" + "Vui lòng điền tên đăng nhập khác.";
+		} else if (!user.getPassword().equals(passwordAgain)) {
+			message = "Mật khẩu không khớp.<br>" + "Vui lòng nhập lại.";
 		} else {
 			message = "";
 			url = "/WEB-INF/views/customer/successView.jsp";
