@@ -34,8 +34,6 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		req.setCharacterEncoding("UTF-8");
-		
 		String url = "/WEB-INF/views/customer/registerView.jsp";
 		
 		String firstName = req.getParameter("firstName");

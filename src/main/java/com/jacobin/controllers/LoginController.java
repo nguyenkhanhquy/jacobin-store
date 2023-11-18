@@ -38,8 +38,6 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
-		req.setCharacterEncoding("UTF-8");
-		
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("password");
 		String rememberMeStr = req.getParameter("rememberMe");
