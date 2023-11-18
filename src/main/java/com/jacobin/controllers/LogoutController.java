@@ -33,9 +33,8 @@ public class LogoutController extends HttpServlet {
 		
 		// Xoá Session
 		HttpSession session = req.getSession();
-		session.invalidate();
+		session.removeAttribute("loginedUser");
 		
-		String url = "/WEB-INF/views/customer/successView.jsp";
-		getServletContext().getRequestDispatcher(url).forward(req, resp);
+		resp.sendRedirect("home");
 	}
 }

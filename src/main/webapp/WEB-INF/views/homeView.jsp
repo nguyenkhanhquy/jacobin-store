@@ -50,18 +50,16 @@
                     <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
                         aria-label="Search">
                     <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
-                    <c:choose>
-    					<c:when test="${not empty sessionScope.loginedUser}">
-					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="#">
-					            <c:out value='${loginedUser.firstName}'/>
-					        </a>
-					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="logout">Đăng xuất</a>
-    					</c:when>
-					    <c:otherwise>
-					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="login">Đăng nhập</a>
-					        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="register">Đăng ký</a>
-					    </c:otherwise>
-					</c:choose>
+   					<c:if test="${sessionScope.loginedUser != null}">
+				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="#">
+				            <c:out value='${loginedUser.firstName}'/>
+				        </a>
+				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="logout">Đăng xuất</a>
+   					</c:if>
+   					<c:if test="${sessionScope.loginedUser == null}">
+				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="login">Đăng nhập</a>
+				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="register">Đăng ký</a>
+				    </c:if>
                 </form>
             </div>
         </div>

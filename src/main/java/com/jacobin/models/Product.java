@@ -31,19 +31,25 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+	@Column(name = "name")
+	private String name;
+	
+	@Column(name = "image")
+	private String image;
+	
+	@Column(name = "price")
+	private double price;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "size")
-	private String size;
-	
 	@Column(name = "desciption")
 	private String description;
 	
-	@Column(name = "price")
-	private double price;
+	@Column(name = "size")
+	private String size;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
 }
