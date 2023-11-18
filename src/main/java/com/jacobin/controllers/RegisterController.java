@@ -13,6 +13,7 @@ import com.jacobin.dao.RoleDB;
 import com.jacobin.dao.UserDB;
 import com.jacobin.models.Role;
 import com.jacobin.models.User;
+import com.jacobin.utils.PasswordEncryptorUtil;
 
 @WebServlet(urlPatterns = { "/register" })
 public class RegisterController extends HttpServlet {
@@ -47,8 +48,7 @@ public class RegisterController extends HttpServlet {
 		String password = req.getParameter("password");
 		String passwordAgain = req.getParameter("passwordAgain");
 		
-		int roleId = 2;
-		Role role = RoleDB.selectRoleByID(roleId);
+		Role role = RoleDB.selectRoleByID(2);
 		
 		User user = new User();
 		user.setFirstName(firstName);
@@ -73,6 +73,8 @@ public class RegisterController extends HttpServlet {
 		} else {
 			message = "";
 			url = "/WEB-INF/views/customer/successView.jsp";
+			password = PasswordEncryptorUtil.toSHA1(password);
+			user.setPassword(password);
 			UserDB.insert(user);
 		}
 		

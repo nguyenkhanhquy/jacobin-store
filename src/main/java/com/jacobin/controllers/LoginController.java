@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jacobin.dao.UserDB;
 import com.jacobin.models.User;
 import com.jacobin.utils.CookieUtil;
+import com.jacobin.utils.PasswordEncryptorUtil;
 import com.jacobin.utils.SessionUtil;
 
 @WebServlet(urlPatterns = { "/login" })
@@ -49,8 +50,8 @@ public class LoginController extends HttpServlet {
 		String url = "/WEB-INF/views/customer/loginView.jsp";
 		String message;
 		
-		// Trong trường hợp có lỗi, forward (chuyển hướng) tới /WEB-INF/views/customer/loginView.jsp
-		if (user == null || !user.getPassword().equals(password)) {
+		// Trường hợp có lỗi thì forward (chuyển hướng) tới /WEB-INF/views/customer/loginView.jsp
+		if (user == null || !user.getPassword().equals(PasswordEncryptorUtil.toSHA1(password))) {
 			message = "Tên đăng nhập hoặc mật khẩu không đúng!";
 			
 			// Lưu các thông tin vào request attribute trước khi forward.
@@ -60,7 +61,7 @@ public class LoginController extends HttpServlet {
 			getServletContext().getRequestDispatcher(url).forward(req, resp);
 		} 
 		// Trường hợp không có lỗi.
-		// Lưu thông tin người dùng vào Session Và chuyển hướng sang trang /home.
+		// Lưu thông tin người dùng vào Session Và chuyển hướng sang trang home.
 		else {
 			
 			HttpSession	session = req.getSession();
