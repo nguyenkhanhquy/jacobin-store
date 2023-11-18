@@ -14,6 +14,9 @@
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link href="resources/css/home.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +24,7 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-				<img src="resources/img/logo/logo.jpg" alt="logo" width="150">
+				<img class="logo" src="resources/img/logo/logo.jpg" alt="logo" width="120">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -33,7 +36,7 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang chủ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Sản phẩm</a></li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false"> Thể loại </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">Thể loại</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Quần Jean</a></li>
                             <li><a class="dropdown-item" href="#">Áo thun</a></li>
@@ -43,23 +46,36 @@
                             <li><a class="dropdown-item" href="#">Áo sơ mi</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link disabled">Hết hàng</a>
+
+                    <li class="nav-item"><a class="nav-link disabled">Hết hàng</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                            <c:if test="${sessionScope.loginedUser == null}">
+                                Tài khoản
+                            </c:if>
+                            <c:if test="${sessionScope.loginedUser != null}">
+                                <c:out value='${loginedUser.firstName} ${loginedUser.lastName}'/>
+                            </c:if>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <c:if test="${sessionScope.loginedUser == null}">
+                                <li><a class="dropdown-item" href="login">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="register">Đăng ký</a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.loginedUser != null}">
+                                <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="logout">Đăng xuất</a></li>
+                            </c:if>
+                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
                         aria-label="Search">
                     <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
-   					<c:if test="${sessionScope.loginedUser != null}">
-				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="#">
-				            <c:out value='${loginedUser.firstName}'/>
-				        </a>
-				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="logout">Đăng xuất</a>
-   					</c:if>
-   					<c:if test="${sessionScope.loginedUser == null}">
-				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="login">Đăng nhập</a>
-				        <a class="btn btn-primary me-2" style="white-space: nowrap;" href="register">Đăng ký</a>
-				    </c:if>
                 </form>
             </div>
         </div>
