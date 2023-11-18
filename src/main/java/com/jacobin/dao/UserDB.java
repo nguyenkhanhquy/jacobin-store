@@ -54,12 +54,12 @@ public class UserDB {
         }       
     }
 
-    public static User selectUserByEmail(String email) {
+    public static User selectUserByUserName(String userName) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT u FROM User u " +
-                "WHERE u.email = :email";
+                "WHERE u.userName = :userName";
         TypedQuery<User> q = em.createQuery(qString, User.class);
-        q.setParameter("email", email);
+        q.setParameter("userName", userName);
         try {
             User user = q.getSingleResult();
             return user;

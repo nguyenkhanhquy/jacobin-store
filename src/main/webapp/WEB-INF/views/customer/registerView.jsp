@@ -23,7 +23,8 @@
 <body>
     <div class="container">
         <div class="text-center mt-4 mb-4">
-            <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+            <a href="home"><img class="mb-4" src="resources/img/logo/logo.jpg" alt="logo" width="150"></a>
+            <h1 class="h3">ĐĂNG KÝ TÀI KHOẢN</h1>
         </div>
 
         <div class="red" id="message">
@@ -35,34 +36,34 @@
                     <h3>Thông tin khách hàng</h3>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Tên<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="ho" name="firstName" required="required" value="${user.firstName}">
+                        <input type="text" class="form-control" id="ho" name="firstName" required value="${user.firstName}">
                     </div>
 
                     <div class="mb-3">
                         <label for="ten" class="form-label">Họ<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="ten" name="lastName" required="required" value="${user.lastName}">
+                        <input type="text" class="form-control" id="ten" name="lastName" required value="${user.lastName}">
                     </div>
 
                     <div class="mb-3">
                         <label for="ngaySinh" class="form-label">Ngày sinh<span class="red">*</span></label> 
-                        <input type="date" class="form-control" id="ngaySinh" name="dateOfBirth" required="required" value="${user.dateOfBirth}">
+                        <input type="date" class="form-control" id="ngaySinh" name="dateOfBirth" required value="${user.dateOfBirth}">
                     </div>
                     
                     <hr/>
 
                     <div class="mb-3">
                         <label for="diaChiKhachHang" class="form-label">Địa chỉ khách hàng<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="diaChiKhachHang" name="address" required="required" value="${user.address}">
+                        <input type="text" class="form-control" id="diaChiKhachHang" name="address" required value="${user.address}">
                     </div>
 
                     <div class="mb-3">
                         <label for="diachiEmail" class="form-label">Địa chỉ Email<span class="red">*</span></label> 
-                        <input type="email" class="form-control" id="diachiEmail" name="email" required="required" value="${user.email}">
+                        <input type="email" class="form-control" id="diachiEmail" name="email" required value="${user.email}">
                     </div>
 
                     <div class="mb-3">
                         <label for="dienThoai" class="form-label">Điện thoại<span class="red">*</span></label> 
-                        <input type="tel" class="form-control" id="dienThoai" name="phone" required="required" value="${user.phone}">
+                        <input type="tel" class="form-control" id="dienThoai" name="phone" required value="${user.phone}">
                     </div>
                 </div>
 
@@ -70,17 +71,17 @@
                     <h3>Tài khoản</h3>
                     <div class="mb-3">
                         <label for="tenDangNhap" class="form-label">Tên đăng nhập<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="tenDangNhap" name="userName" required="required" value="${user.userName}">
+                        <input type="text" class="form-control" id="tenDangNhap" name="userName" required value="${user.userName}">
                     </div>
 
                     <div class="mb-3">
                         <label for="matkhau" class="form-label">Mật khẩu<span class="red">*</span></label> 
-                        <input type="password" class="form-control" id="matkhau" name="password" required="required" value="${user.password}">
+                        <input type="password" class="form-control" id="matkhau" name="password" required">
                     </div>
 
                     <div class="mb-3">
                         <label for="matKhauNhapLai" class="form-label">Nhập lại mật khẩu<span class="red">*</span></label> 
-                        <input type="password" class="form-control" id="matKhauNhapLai" name="passwordAgain" required="required">
+                        <input type="password" class="form-control" id="matKhauNhapLai" name="passwordAgain" required>
                     </div>
 
                     <hr/>
