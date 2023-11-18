@@ -1,5 +1,7 @@
 package com.jacobin.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -62,6 +64,20 @@ public class CategoryDB {
         q.setParameter("categoryId", categoryId);
         try {
         	Category category = q.getSingleResult();
+            return category;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static List<Category> selectAllCategory() {
+    	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT c FROM Category c";
+        TypedQuery<Category> q = em.createQuery(qString, Category.class);
+        try {
+        	List<Category> category = q.getResultList();
             return category;
         } catch (NoResultException e) {
             return null;

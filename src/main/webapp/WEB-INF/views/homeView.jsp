@@ -86,9 +86,9 @@
             <!-- Menu left -->
             <div class="col-lg-3">
                 <div class="list-group ">
-                    <a href="#" class="list-group-item list-group-item-action">Thời trang nam </a> 
-                    <a href="#" class="list-group-item list-group-item-action">Thời trang nữ</a> 
-                    <a href="#" class="list-group-item list-group-item-action">Dành cho bé</a>
+                	<c:forEach items="${ListC}" var="c">
+                		<a href="#" class="list-group-item list-group-item-action">${c.name}</a>
+                	</c:forEach>
                 </div>
             </div>
             <!-- End Menu left -->
