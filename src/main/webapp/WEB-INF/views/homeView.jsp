@@ -65,6 +65,7 @@
                             </c:if>
                             <c:if test="${sessionScope.loginedUser != null}">
                                 <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                                <li><a class="dropdown-item" href="update-password">Đổi mật khẩu</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="logout">Đăng xuất</a></li>
                             </c:if>
