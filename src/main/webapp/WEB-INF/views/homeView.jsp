@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <!-- Navbar -->
+	<!-- Navbar -->
 	<jsp:include page="includes/header.jsp" />
 	<!-- End Navbar -->
 
@@ -92,7 +92,9 @@
 
     <!-- Footer -->
     <jsp:include page="includes/footer.jsp" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <!-- End footer -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
     <script>
     	function loadMore() {
     		var amount = document.getElementsByClassName("product").length;
@@ -112,7 +114,6 @@
     		});  
     	}
     </script>
-    <!-- End footer -->
 </body>
 
 </html>

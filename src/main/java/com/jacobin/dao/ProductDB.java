@@ -90,7 +90,7 @@ public class ProductDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT p FROM Product p";
         TypedQuery<Product> q = em.createQuery(qString, Product.class)
-        		.setMaxResults(4);
+        		.setMaxResults(20);
         try {
             List<Product> list = q.getResultList();
             return list;
@@ -106,7 +106,7 @@ public class ProductDB {
         String qString = "SELECT p FROM Product p";
         TypedQuery<Product> q = em.createQuery(qString, Product.class)
         		.setFirstResult(amount)
-        		.setMaxResults(2);
+        		.setMaxResults(10);
         try {
             List<Product> list = q.getResultList();
             return list;
