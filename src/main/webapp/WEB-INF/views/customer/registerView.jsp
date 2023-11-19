@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -13,96 +14,101 @@
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <style>
-        .red {
-            color: red;
-        }
-    </style>
+
+    <link href="resources/css/register.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="text-center mt-4 mb-4">
-            <a href="home"><img class="mb-4" src="resources/img/logo/logo.jpg" alt="logo" width="150"></a>
-            <h1 class="h3">ĐĂNG KÝ TÀI KHOẢN</h1>
-        </div>
+    <main class="form-register w-100 m-auto">
+        <form class="text-center" action="register" method="post">
 
-        <div class="red" id="message">
-            <p><i>${message}</i></p>
-        </div>
-        <form class="form" action="register" method="post">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3>Thông tin khách hàng</h3>
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">Tên<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="ho" name="firstName" required value="${user.firstName}">
+            <a href="home"><img class="logo mb-4" src="resources/img/logo/logo.jpg" alt="logo" width="150"></a>
+            
+            <h1 class="h3 mb-3 fw-normal">ĐĂNG KÝ TÀI KHOẢN</h1>
+
+            <c:if test="${sessionScope.loginedUser == null}">
+				<div class="text-center" id="message"><p class="red"><i>${message}</i></p></div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Thông tin khách hàng</strong></p>
+
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="ten" placeholder="Tên" name="firstName" value="${user.firstName}" required> 
+                            <label for="ten">Tên<span class="red">*</span></label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="ho" placeholder="Họ" name="lastName" value="${user.lastName}" required> 
+                            <label for="ho">Họ<span class="red">*</span></label>
+                        </div>
+                        
+                        <div class="form-floating mb-4">
+                            <input type="date" class="form-control" id="ngaySinh" placeholder="Ngày sinh" name="dateOfBirth" value="${user.dateOfBirth}" required> 
+                            <label for="ngaySinh">Ngày sinh<span class="red">*</span></label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="diaChiKhachHang" placeholder="Địa chỉ" name="address" value="${user.address}" required> 
+                            <label for="diaChiKhachHang">Địa chỉ<span class="red">*</span></label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="diaChiEmail" placeholder="Email" name="email" value="${user.email}" required> 
+                            <label for="diaChiEmail">Email<span class="red">*</span></label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="tel" class="form-control" id="dienThoai" placeholder="Số điện thoại" name="phone" value="${user.phone}" required> 
+                            <label for="dienThoai">Số điện thoại<span class="red">*</span></label>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="ten" class="form-label">Họ<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="ten" name="lastName" required value="${user.lastName}">
-                    </div>
+                    <div class="col-sm-6">
+                        <p><strong>Tài khoản</strong></p>
 
-                    <div class="mb-3">
-                        <label for="ngaySinh" class="form-label">Ngày sinh<span class="red">*</span></label> 
-                        <input type="date" class="form-control" id="ngaySinh" name="dateOfBirth" required value="${user.dateOfBirth}">
-                    </div>
-                    
-                    <hr/>
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="tenDangNhap" placeholder="Tên đăng nhập" name="userName" value="${user.userName}" required> 
+                            <label for="tenDangNhap">Tên đăng nhập<span class="red">*</span></label>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="diaChiKhachHang" class="form-label">Địa chỉ khách hàng<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="diaChiKhachHang" name="address" required value="${user.address}">
-                    </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="matKhau" placeholder="Mật khẩu" name="password" required> 
+                            <label for="matKhau">Mật khẩu<span class="red">*</span></label>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="diaChiEmail" class="form-label">Địa chỉ Email<span class="red">*</span></label> 
-                        <input type="email" class="form-control" id="diaChiEmail" name="email" required value="${user.email}">
-                    </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="matKhauNhapLai" placeholder="Nhập lại mật khẩu" name="passwordAgain" required> 
+                            <label for="matKhauNhapLai">Nhập lại mật khẩu<span class="red">*</span></label>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="dienThoai" class="form-label">Điện thoại<span class="red">*</span></label> 
-                        <input type="tel" class="form-control" id="dienThoai" name="phone" required value="${user.phone}">
+                        <hr/>
+
+                        <div class="mb-3">
+                            <label for="dongYDieuKhoan" class="form-label"> Đồng ý <a>điều khoản người dùng</a><span class="red">*</span></label> 
+                            <input type="checkbox" class="form-check-input" id="dongYDieuKhoan" name="dongYDieuKhoan" required="required" onchange="xuLyChonDongY()">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="dongYNhanMail" class="form-label">Đồng ý nhận email về sản phẩm</label> 
+                            <input type="checkbox" class="form-check-input" id="dongYNhanMail" name="dongYNhanMail">
+                        </div>
+
+                        <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" id="submit" style="visibility: hidden;">Đăng ký</button>
                     </div>
                 </div>
+			</c:if>
 
-                <div class="col-sm-6">
-                    <h3>Tài khoản</h3>
-                    <div class="mb-3">
-                        <label for="tenDangNhap" class="form-label">Tên đăng nhập<span class="red">*</span></label> 
-                        <input type="text" class="form-control" id="tenDangNhap" name="userName" required value="${user.userName}">
-                    </div>
+            <c:if test="${sessionScope.loginedUser != null}">
+				<div class="text-center"><p class="red"><i>Bạn cần đăng xuất trước khi tạo tài khoản mới!</i></p></div>
+			
+				<a href="logout" class="w-100 btn btn-lg btn-primary mb-2" type="submit">Đăng xuất</a>
+                <a href="home" class="w-100 btn btn-lg btn-primary mb-2" type="submit">Về trang chủ</a>
+			</c:if>
 
-                    <div class="mb-3">
-                        <label for="matkhau" class="form-label">Mật khẩu<span class="red">*</span></label> 
-                        <input type="password" class="form-control" id="matkhau" name="password" required">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="matKhauNhapLai" class="form-label">Nhập lại mật khẩu<span class="red">*</span></label> 
-                        <input type="password" class="form-control" id="matKhauNhapLai" name="passwordAgain" required>
-                    </div>
-
-                    <hr/>
-
-                    <div class="mb-3">
-                        <label for="dongYDieuKhoan" class="form-label">
-                            Đồng ý với <a>điều khoản của Jacobin</a><span class="red">*</span>
-                        </label> 
-                        <input type="checkbox" class="form-check-input" id="dongYDieuKhoan" name="dongYDieuKhoan" required="required" onchange="xuLyChonDongY()">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="dongYNhanMail" class="form-label">Đồng ý nhận email về sản phẩm</label> 
-                        <input type="checkbox" class="form-check-input" id="dongYNhanMail" name="dongYNhanMail">
-                    </div>
-
-                    <input class="btn btn-primary form-control" type="submit" value="Đăng ký" name="submit" id="submit" style="visibility: hidden;" />
-                </div>
-            </div>
+            <p class="mt-3 mb-3 text-muted">&copy; 2023 Jacobin.com</p>
         </form>
-    </div>
+    </main>
 </body>
 
 <script>

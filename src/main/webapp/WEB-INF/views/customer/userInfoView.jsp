@@ -64,14 +64,14 @@
                         </div>
 
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="dienThoai" placeholder="Số điện thoại" name="phone" value="${user.phone}" required disabled> 
+                            <input type="tel" class="form-control" id="dienThoai" placeholder="Số điện thoại" name="phone" value="${user.phone}" required disabled> 
                             <label for="dienThoai">Số điện thoại<span class="red">*</span></label>
                         </div>
                         
                         <hr/>		
 
                         <div class="mb-3">
-                            <label for="dongYNhanMail" class="form-label">Đồng ý nhận email</label> 
+                            <label for="dongYNhanMail" class="form-label">Đồng ý nhận email về sản phẩm</label> 
                             <input type="checkbox" class="form-check-input" id="dongYNhanMail" name="dongYNhanMail">
                         </div>
                         <button id="edit-btn" type="button" class="w-100 btn btn-lg btn-primary mb-2">Chỉnh sửa</button>
