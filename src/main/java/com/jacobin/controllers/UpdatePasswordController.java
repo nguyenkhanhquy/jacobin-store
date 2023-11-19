@@ -42,13 +42,12 @@ public class UpdatePasswordController extends HttpServlet {
 		HttpSession session = req.getSession();
 		User user = SessionUtil.getLoginedUser(session);
 		
-		String message;
+		String message = "";
 		if (!PasswordEncryptorUtil.toSHA1(password).equals(user.getPassword())) {
 			message = "Mật khẩu hiện tại không chính xác!";
 		} else if (!newPassword.equals(newPasswordAgain)) {
 			message = "Mật khẩu nhập lại không khớp!";
 		} else {
-			message = "";
 			url = "/WEB-INF/views/customer/successView.jsp";
 			newPassword = PasswordEncryptorUtil.toSHA1(newPassword);
 			user.setPassword(newPassword);

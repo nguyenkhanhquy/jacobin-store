@@ -57,8 +57,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="diachiEmail" class="form-label">Địa chỉ Email<span class="red">*</span></label> 
-                        <input type="email" class="form-control" id="diachiEmail" name="email" required value="${user.email}">
+                        <label for="diaChiEmail" class="form-label">Địa chỉ Email<span class="red">*</span></label> 
+                        <input type="email" class="form-control" id="diaChiEmail" name="email" required value="${user.email}">
                     </div>
 
                     <div class="mb-3">
