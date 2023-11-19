@@ -34,8 +34,6 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		req.setCharacterEncoding("UTF-8");
-		
 		String url = "/WEB-INF/views/customer/registerView.jsp";
 		
 		String firstName = req.getParameter("firstName");
@@ -61,7 +59,7 @@ public class RegisterController extends HttpServlet {
 		user.setPassword(password);
 		user.setRole(role);
 		
-		String message;
+		String message = "";
 		if (UserDB.checkExists(user.getEmail())) {
 			message = "Địa chỉ Email đã tồn tại.<br>" + "Vui lòng điền một địa chỉ Email khác.";
 		} else if (UserDB.checkExists(user.getPhone())) {
@@ -71,7 +69,6 @@ public class RegisterController extends HttpServlet {
 		} else if (!user.getPassword().equals(passwordAgain)) {
 			message = "Mật khẩu không khớp.<br>" + "Vui lòng nhập lại.";
 		} else {
-			message = "";
 			url = "/WEB-INF/views/customer/successView.jsp";
 			password = PasswordEncryptorUtil.toSHA1(password);
 			user.setPassword(password);

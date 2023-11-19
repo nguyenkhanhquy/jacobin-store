@@ -24,10 +24,9 @@ public class LogoutController extends HttpServlet {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.setCharacterEncoding("UTF-8");
-		
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+	
 		// Xóa Cookie
 		CookieUtil.deleteUserCookie(resp);
 		
