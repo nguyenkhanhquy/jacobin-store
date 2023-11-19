@@ -1,4 +1,4 @@
-package com.jacobin.data;
+package com.jacobin.dao;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "user")
@@ -25,7 +26,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -35,14 +36,14 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 
-	@Column(name = "phone")
-	private String phone;
-
 	@Column(name = "user_name")
 	private String userName;
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "phone")
+	private String phone;
 
 	@Column(name = "email")
 	private String email;

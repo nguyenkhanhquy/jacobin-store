@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "product")
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,19 +33,25 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+	@Column(name = "name")
+	private String name;
+	
+	@Column(name = "image")
+	private String image;
+	
+	@Column(name = "price")
+	private double price;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "size")
-	private String size;
-	
 	@Column(name = "desciption")
 	private String description;
 	
-	@Column(name = "price")
-	private double price;
+	@Column(name = "size")
+	private String size;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
 }

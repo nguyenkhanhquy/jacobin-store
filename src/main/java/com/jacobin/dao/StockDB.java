@@ -1,4 +1,4 @@
-package com.jacobin.data;
+package com.jacobin.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -24,7 +24,7 @@ public class StockDB {
         }       
     }
 	
-	public static Stock selectStock(int stockId) {
+	public static Stock selectStockByID(int stockId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT s FROM Stock s " +
                 "WHERE s.stockId = :stockId";
