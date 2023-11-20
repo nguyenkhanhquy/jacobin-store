@@ -23,6 +23,8 @@ public class LoadMoreController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
+		resp.setContentType("text/html; charset=UTF-8");
+		
 		String amount = req.getParameter("exits");
 		int iamount = Integer.parseInt(amount);
 		
