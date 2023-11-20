@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <!-- Navbar -->
+	<!-- Navbar -->
 	<jsp:include page="includes/header.jsp" />
 	<!-- End Navbar -->
 
@@ -63,9 +63,9 @@
                 </div>
                 <!-- End Slider -->
                 <!-- Products -->
-                <div class="row">
+                <div id="content" class="row">
                     <c:forEach items="${ListP}" var="p">
-                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="product col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
                                 <a href="#"><img class="card-img-top" src="${p.image}" alt=""></a>
                                 <div class="card-body">
@@ -83,6 +83,7 @@
                     </c:forEach> 
                 </div>
                 <!-- End Products -->
+                <button onclick="loadMore()" class="btn btn-primary">Load more</button>
             </div>
             <!-- End Slider and Products -->
         </div>
@@ -92,6 +93,27 @@
     <!-- Footer -->
     <jsp:include page="includes/footer.jsp" />
     <!-- End footer -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+    <script>
+    	function loadMore() {
+    		var amount = document.getElementsByClassName("product").length;
+    		$.ajax({  
+    			url: '/jacobin-store/load',  
+    			type: 'GET',
+    			data: {
+                    exits: amount
+                },
+    			success: function(data) {  
+    			    var row = document.getElementById("content");
+    			    row.innerHTML += data;
+    			},
+    			error: function(xhr) {
+    				//do something to handle error
+    			}
+    		});  
+    	}
+    </script>
 </body>
 
 </html>

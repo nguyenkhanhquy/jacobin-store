@@ -29,7 +29,7 @@ public class HomeController extends HttpServlet {
 		
     	List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
-		List<Product> listP = ProductDB.selectAllProduct();
+		List<Product> listP = ProductDB.select20FirstProduct();
     	req.setAttribute("ListP", listP);
     	
 		RequestDispatcher dispatcher = this.getServletContext()
