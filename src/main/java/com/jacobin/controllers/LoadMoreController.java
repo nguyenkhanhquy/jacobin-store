@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jacobin.dao.DBUtil;
 import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Product;
 
@@ -27,8 +26,6 @@ public class LoadMoreController extends HttpServlet{
 		
 		String amount = req.getParameter("exits");
 		int iamount = Integer.parseInt(amount);
-		
-		DBUtil.getEmFactory();
 		
 		List<Product> listP = ProductDB.selectNext10Product(iamount);
     	PrintWriter out = resp.getWriter();
@@ -50,5 +47,12 @@ public class LoadMoreController extends HttpServlet{
     				+ "                            </div>\r\n"
     				+ "                        </div>");
     	}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		
+		doGet(req, resp);
 	}
 }

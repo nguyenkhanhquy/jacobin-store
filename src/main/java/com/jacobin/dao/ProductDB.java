@@ -116,4 +116,20 @@ public class ProductDB {
             em.close();
         }
     }
+    
+    public static List<Product> selectProductByCategoryId(int categoryId) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT p FROM Product p " +
+                "WHERE p.category.categoryId = :categoryId";
+        TypedQuery<Product> q = em.createQuery(qString, Product.class);
+        q.setParameter("categoryId", categoryId);
+        try {
+            List<Product> list = q.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 }
