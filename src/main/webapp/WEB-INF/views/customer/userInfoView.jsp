@@ -33,6 +33,7 @@
 			</c:if>
 
 			<c:if test="${sessionScope.loginedUser != null}">
+				<h5><span class="badge text-bg-primary">Quyền truy cập: ${user.getRole().getRoleName()}</span></h5>
 				<div class="text-center"><p class="red"><i>${message}</i></p></div>
                 <div class="row">
                     <div class="col-sm-6">
