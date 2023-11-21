@@ -26,8 +26,6 @@ public class CategoryController extends HttpServlet{
 		
 		int categoryId = Integer.parseInt(req.getParameter("cId"));
 		
-		DBUtil.getEmFactory();
-		
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		List<Product> listP = ProductDB.selectProductByCategoryId(categoryId);

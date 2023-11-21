@@ -28,8 +28,6 @@ public class LoadMoreController extends HttpServlet{
 		String amount = req.getParameter("exits");
 		int iamount = Integer.parseInt(amount);
 		
-		DBUtil.getEmFactory();
-		
 		List<Product> listP = ProductDB.selectNext10Product(iamount);
     	PrintWriter out = resp.getWriter();
     	
