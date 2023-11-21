@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jacobin.dao.DBUtil;
 import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Product;
 

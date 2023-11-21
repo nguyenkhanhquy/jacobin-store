@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jacobin.dao.CategoryDB;
-import com.jacobin.dao.DBUtil;
 import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Category;
 import com.jacobin.models.Product;
@@ -24,12 +23,19 @@ public class CategoryController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int categoryId = Integer.parseInt(req.getParameter("cId"));
+		String categoryIdString = req.getParameter("cId");
 		
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
-		List<Product> listP = ProductDB.selectProductByCategoryId(categoryId);
-    	req.setAttribute("ListP", listP);
+		
+		try {
+			int categoryId = Integer.parseInt(categoryIdString);
+			List<Product> listP = ProductDB.selectProductByCategoryId(categoryId);
+			req.setAttribute("ListP", listP);
+		} catch (NumberFormatException nfe) {
+			List<Product> listP = ProductDB.selectAllProduct();
+			req.setAttribute("ListP", listP);
+		}
     	
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/homeView.jsp");
