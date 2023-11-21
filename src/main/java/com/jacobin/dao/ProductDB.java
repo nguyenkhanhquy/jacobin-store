@@ -117,11 +117,30 @@ public class ProductDB {
         }
     }
     
-    public static List<Product> selectProductByCategoryId(int categoryId) {
+    public static List<Product> select10FirstProductByCategoryId(int categoryId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT p FROM Product p " +
                 "WHERE p.category.categoryId = :categoryId";
-        TypedQuery<Product> q = em.createQuery(qString, Product.class);
+        TypedQuery<Product> q = em.createQuery(qString, Product.class)
+        		.setMaxResults(5);
+        q.setParameter("categoryId", categoryId);
+        try {
+            List<Product> list = q.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static List<Product> selectNext5ProductByCategoryId(int categoryId, int amount) {
+    	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT p FROM Product p " +
+                "WHERE p.category.categoryId = :categoryId";
+        TypedQuery<Product> q = em.createQuery(qString, Product.class)
+        		.setFirstResult(amount)
+        		.setMaxResults(5);
         q.setParameter("categoryId", categoryId);
         try {
             List<Product> list = q.getResultList();

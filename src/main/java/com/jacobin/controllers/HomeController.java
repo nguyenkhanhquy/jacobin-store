@@ -27,6 +27,9 @@ public class HomeController extends HttpServlet {
 		
 		DBUtil.getEmFactory();
 		
+		String cId = null;
+		req.setAttribute("cId", cId);
+		
     	List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		List<Product> listP = ProductDB.select20FirstProduct();

@@ -83,7 +83,7 @@
                     </c:forEach> 
                 </div>
                 <!-- End Products -->
-                <button onclick="loadMore()" class="btn btn-primary">Load more</button>
+                <button onclick="loadMore(${cId})" class="btn btn-primary">Load more</button>
             </div>
             <!-- End Slider and Products -->
         </div>
@@ -96,10 +96,14 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
     <script>
-    	function loadMore() {
+    	function loadMore(categoryId) {
     		var amount = document.getElementsByClassName("product").length;
+    		var url = '/jacobin-store/load';
+    	    if (categoryId !== undefined) {
+    	        url += '?cId=' + categoryId;
+    	    }
     		$.ajax({  
-    			url: '/jacobin-store/load',  
+    			url: url,  
     			type: 'GET',
     			data: {
                     exits: amount

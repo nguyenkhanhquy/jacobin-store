@@ -24,10 +24,19 @@ public class LoadMoreController extends HttpServlet{
 		
 		resp.setContentType("text/html; charset=UTF-8");
 		
+		String categoryIdString = req.getParameter("cId");
+		
 		String amount = req.getParameter("exits");
 		int iamount = Integer.parseInt(amount);
 		
-		List<Product> listP = ProductDB.selectNext10Product(iamount);
+		List<Product> listP;
+		if (categoryIdString != null && !categoryIdString.isEmpty()) {
+			int categoryId = Integer.parseInt(categoryIdString);
+			listP = ProductDB.selectNext5ProductByCategoryId(categoryId, iamount);
+		} else {
+			listP = ProductDB.selectNext10Product(iamount);
+		}
+
     	PrintWriter out = resp.getWriter();
     	
     	for (Product p : listP ) {
