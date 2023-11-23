@@ -88,14 +88,6 @@ public class ProductDB {
         }
     }
     
-    /*public static void main(String[] agrs ) {
-    	String txtSearch="ao";
-    	List<Product> list = ProductDB.selectProductByName(txtSearch);
-    	for (Product o:list) {
-    		System.out.println(o);
-    	}
-    } */
-    
     public static List<Product> selectAllProduct() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT p FROM Product p";
