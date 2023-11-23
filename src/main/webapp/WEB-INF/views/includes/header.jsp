@@ -52,7 +52,7 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form action="search" class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
                     aria-label="Search" name="pName">
                 <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
