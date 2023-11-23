@@ -27,6 +27,9 @@ public class LogoutController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 	
+		String url = "/WEB-INF/views/customer/successView.jsp";
+		String message = "Đăng xuất thành công!";
+		
 		// Xóa Cookie
 		CookieUtil.deleteUserCookie(resp);
 		
@@ -34,7 +37,7 @@ public class LogoutController extends HttpServlet {
 		HttpSession session = req.getSession();
 		session.removeAttribute("loginedUser");
 	
-		req.getRequestDispatcher("/WEB-INF/views/customer/successView.jsp").forward(req, resp);
-//		resp.sendRedirect("home");
+		req.setAttribute("message", message);
+		req.getRequestDispatcher(url).forward(req, resp);
 	}
 }

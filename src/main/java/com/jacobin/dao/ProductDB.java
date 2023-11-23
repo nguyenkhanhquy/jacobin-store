@@ -166,7 +166,5 @@ public class ProductDB {
         } finally {
             em.close();
         }
-        
-        
     }
 }

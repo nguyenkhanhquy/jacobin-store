@@ -15,28 +15,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang chủ</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sản phẩm</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Thể loại</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Quần Jean</a></li>
-                        <li><a class="dropdown-item" href="#">Áo thun</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Áo sơ mi</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item"><a class="nav-link disabled">Hết hàng</a></li>
-
+                
+                <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
+                	<li class="nav-item"><a class="nav-link" href="manager-product">Quản lý sản phẩm</a></li>
+                	<li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
+                	<li class="nav-item"><a class="nav-link" href="#">Quản lý đơn hàng</a></li>
+                </c:if>
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user">&nbsp;</i>
                         <c:if test="${sessionScope.loginedUser == null}">Tài khoản</c:if>
                         <c:if test="${sessionScope.loginedUser != null}">
                             <c:out value='${loginedUser.firstName} ${loginedUser.lastName}'/>
-                        </c:if>
+                        </c:if>  
                     </a>
                     <ul class="dropdown-menu">
                         <c:if test="${sessionScope.loginedUser == null}">
