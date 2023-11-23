@@ -24,13 +24,15 @@ public class CategoryController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String categoryIdString = req.getParameter("cId");
+		String cId = categoryIdString;
+		req.setAttribute("cId", cId);
 		
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		
 		try {
 			int categoryId = Integer.parseInt(categoryIdString);
-			List<Product> listP = ProductDB.selectProductByCategoryId(categoryId);
+			List<Product> listP = ProductDB.select10FirstProductByCategoryId(categoryId);
 			req.setAttribute("ListP", listP);
 		} catch (NumberFormatException nfe) {
 			List<Product> listP = ProductDB.selectAllProduct();
