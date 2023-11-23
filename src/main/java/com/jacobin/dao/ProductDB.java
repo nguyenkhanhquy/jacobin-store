@@ -72,6 +72,22 @@ public class ProductDB {
         }
     }
     
+    public static List<Product> selectProductByName(String productNameSearch) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT p FROM Product p " +
+                "WHERE p.name LIKE :pName";
+        TypedQuery<Product> q = em.createQuery(qString, Product.class);
+        q.setParameter("pName", "%" + productNameSearch + "%");
+        try {
+        	List<Product> list = q.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
     public static List<Product> selectAllProduct() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT p FROM Product p";
@@ -150,5 +166,7 @@ public class ProductDB {
         } finally {
             em.close();
         }
+        
+        
     }
 }
