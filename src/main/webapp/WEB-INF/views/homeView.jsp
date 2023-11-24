@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -11,17 +11,14 @@
     <title>Jacobin Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <link href="resources/css/home.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar -->
+	<!-- Navbar -->
 	<jsp:include page="includes/header.jsp" />
 	<!-- End Navbar -->
 
@@ -63,9 +60,9 @@
                 </div>
                 <!-- End Slider -->
                 <!-- Products -->
-                <div class="row">
+                <div id="content" class="row">
                     <c:forEach items="${ListP}" var="p">
-                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="product col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
                                 <a href="#"><img class="card-img-top" src="${p.image}" alt=""></a>
                                 <div class="card-body">
@@ -83,6 +80,7 @@
                     </c:forEach> 
                 </div>
                 <!-- End Products -->
+                <button onclick="loadMore(${cId})" class="btn btn-primary">Load more</button>
             </div>
             <!-- End Slider and Products -->
         </div>
@@ -92,6 +90,33 @@
     <!-- Footer -->
     <jsp:include page="includes/footer.jsp" />
     <!-- End footer -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+    <script>
+    	function loadMore(categoryId) {
+    		var amount = document.getElementsByClassName("product").length;
+    		var url = '/jacobin-store/load';
+    	    if (categoryId !== undefined) {
+    	        url += '?cId=' + categoryId;
+    	    }
+    		$.ajax({  
+    			url: url,  
+    			type: 'GET',
+    			data: {
+                    exits: amount
+                },
+    			success: function(data) {  
+    			    var row = document.getElementById("content");
+    			    row.innerHTML += data;
+    			},
+    			error: function(xhr) {
+    				//do something to handle error
+    			}
+    		});  
+    	}
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

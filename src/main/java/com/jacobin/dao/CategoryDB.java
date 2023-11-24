@@ -56,12 +56,28 @@ public class CategoryDB {
         }       
     }
 
-    public static Category selectCategoryById(Category categoryId) {
+    public static Category selectCategoryById(int categoryId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT c FROM Category c " +
-                "WHERE c.category = :category";
+                "WHERE c.categoryId = :categoryId";
         TypedQuery<Category> q = em.createQuery(qString, Category.class);
         q.setParameter("categoryId", categoryId);
+        try {
+        	Category category = q.getSingleResult();
+            return category;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static Category selectCategoryByName(String name) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT c FROM Category c " +
+                "WHERE c.name = :name";
+        TypedQuery<Category> q = em.createQuery(qString, Category.class);
+        q.setParameter("name", name);
         try {
         	Category category = q.getSingleResult();
             return category;

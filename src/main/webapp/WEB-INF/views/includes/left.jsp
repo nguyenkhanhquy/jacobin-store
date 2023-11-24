@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!-- Menu left -->
+
 <div class="col-lg-3">
-    <div class="list-group ">
+    <div class="list-group">
+    	<a href="category" class="list-group-item list-group-item-dark">Tất cả danh mục</a>
         <c:forEach items="${ListC}" var="c">
-            <a href="#" class="list-group-item list-group-item-action">${c.name}</a>
+            <a href="category?cId=${c.categoryId}" class="list-group-item list-group-item-action">${c.name}</a>
         </c:forEach>
     </div>
 </div>
-<!-- End Menu left -->

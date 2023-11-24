@@ -30,7 +30,7 @@ public class MailUtilGmail {
 		Message message = new MimeMessage(session);
 		message.setSubject(subject);
 		if (bodyIsHTML) {
-			message.setContent(body, "text/html");
+			message.setContent(body, "text/html; charset=UTF-8");
 		} else {
 			message.setText(body);
 		}

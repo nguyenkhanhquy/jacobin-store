@@ -72,6 +72,7 @@ public class UserInfoController extends HttpServlet {
 		userR.setAddress(address);
 		userR.setEmail(userS.getEmail());
 		userR.setPhone(userS.getPhone());
+		userR.setRole(userS.getRole());
 		
 		req.setAttribute("user", userR);
 		req.setAttribute("message", message);
