@@ -1,4 +1,4 @@
-package com.jacobin.controllers;
+package com.jacobin.controllers.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +18,7 @@ import com.jacobin.models.Product;
 import com.jacobin.models.User;
 import com.jacobin.utils.SessionUtil;
 
-@WebServlet(urlPatterns = {"/manager-product"})
+@WebServlet(urlPatterns = {"/admin/manager-product"})
 public class ManagerProductController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

@@ -101,6 +101,21 @@ public class ProductDB {
             em.close();
         }
     }
+
+    public static List<Product> selectProductByIdDesc() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT p FROM Product p " +
+        		"ORDER BY p.productId DESC";
+        TypedQuery<Product> q = em.createQuery(qString, Product.class);
+        try {
+            List<Product> list = q.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
     
     public static List<Product> select20FirstProduct() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

@@ -17,7 +17,7 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang chủ</a></li>
                 
                 <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
-                	<li class="nav-item"><a class="nav-link" href="manager-product">Quản lý sản phẩm</a></li>
+                	<li class="nav-item"><a class="nav-link" href="admin/manager-product">Quản lý sản phẩm</a></li>
                 	<li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
                 	<li class="nav-item"><a class="nav-link" href="#">Quản lý đơn hàng</a></li>
                 </c:if>
