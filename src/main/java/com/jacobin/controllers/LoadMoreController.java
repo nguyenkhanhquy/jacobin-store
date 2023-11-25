@@ -29,26 +29,24 @@ public class LoadMoreController extends HttpServlet{
 		String amount = req.getParameter("exits");
 		int iamount = Integer.parseInt(amount);
 		
-		List<Product> listP;
+		List<Product> listP = ProductDB.selectNext10Product(iamount);
 		if (categoryIdString != null && !categoryIdString.isEmpty()) {
 			int categoryId = Integer.parseInt(categoryIdString);
 			listP = ProductDB.selectNext5ProductByCategoryId(categoryId, iamount);
-		} else {
-			listP = ProductDB.selectNext10Product(iamount);
 		}
-
+		
     	PrintWriter out = resp.getWriter();
-    	
+    
     	for (Product p : listP ) {
     		out.println("<div class=\"product col-lg-4 col-md-6 mb-4\">\r\n"
     				+ "                            <div class=\"card h-100\">\r\n"
     				+ "                                <a href=\"#\"><img class=\"card-img-top\" src=\""+p.getImage()+"\" alt=\"\"></a>\r\n"
     				+ "                                <div class=\"card-body\">\r\n"
     				+ "                                    <h4 class=\"card-title\">\r\n"
-    				+ "                                        <a href=\"#\">"+p.getName()+"</a>\r\n"
+    				+ "                                        <a href=\"detail?pId="+p.getProductId()+"\">"+p.getName()+"</a>\r\n"
     				+ "                                    </h4>\r\n"
     				+ "                                    <h5><fmt:formatNumber type=\"number\" value=\""+p.getPrice()+"\" pattern=\"#,##0\" /> VNĐ</h5>\r\n"
-    				+ "                                    <p class=\"card-text\">"+p.getDescription()+"</p>\r\n"
+    				+ "                                    <p class=\"card-text\">"+p.getTitle()+"</p>\r\n"
     				+ "                                </div>\r\n"
     				+ "                                <div class=\"card-footer\">\r\n"
     				+ "                                    <small class=\"text-muted\">&#9733; &#9733; &#9733; &#9733; &#9734;</small>\r\n"

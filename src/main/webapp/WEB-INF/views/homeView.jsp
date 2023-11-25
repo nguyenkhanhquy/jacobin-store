@@ -67,10 +67,10 @@
                                 <a href="#"><img class="card-img-top" src="${p.image}" alt=""></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a href="#">${p.name}</a>
+                                        <a href="detail?pId=${p.productId}">${p.name}</a>
                                     </h4>
                                     <h5><fmt:formatNumber type="number" value="${p.price}" pattern="#,##0" /> VNĐ</h5>
-                                    <p class="card-text">${p.description}</p>
+                                    <p class="card-text">${p.title}</p>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -90,6 +90,15 @@
     <!-- Footer -->
     <jsp:include page="includes/footer.jsp" />
     <!-- End footer -->
+    
+    <% boolean isSearchPage = false; %>
+    
+    <%
+    String productNameString = request.getParameter("pName");
+    if (productNameString != null && !productNameString.isEmpty()) {
+        isSearchPage = true;
+    }
+	%>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
     <script>
@@ -114,6 +123,16 @@
     			}
     		});  
     	}
+    </script>
+
+    <script>
+        // Kiểm tra nếu là trang tìm kiếm thì ẩn nút "Load more"
+        <% if (isSearchPage) { %>
+            var loadMoreBtn = document.querySelector('.btn.btn-primary');
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = 'none';
+            }
+        <% } %>
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

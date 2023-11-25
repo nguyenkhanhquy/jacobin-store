@@ -15,8 +15,8 @@ import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Category;
 import com.jacobin.models.Product;
 
-@WebServlet(urlPatterns = { "/category" })
-public class CategoryController extends HttpServlet{
+@WebServlet(urlPatterns = { "/detail" })
+public class DetailController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,24 +24,22 @@ public class CategoryController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
-		String categoryIdString = req.getParameter("cId");
-		req.setAttribute("cId", categoryIdString);
-		req.setAttribute("tag", categoryIdString);
-		
+		String productIdString = req.getParameter("pId");
+
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		
 		try {
-			int categoryId = Integer.parseInt(categoryIdString);
-			List<Product> listP = ProductDB.select10FirstProductByCategoryId(categoryId);
-			req.setAttribute("ListP", listP);
-		} catch (NumberFormatException nfe) {
-			List<Product> listP = ProductDB.select20FirstProduct();
-			req.setAttribute("ListP", listP);
+			int productId = Integer.parseInt(productIdString);
+			Product product = ProductDB.selectProductById(productId);
+			req.setAttribute("product", product);
 		}
-    	
+		catch (NumberFormatException nfe) {
+			System.out.print("error");
+		}
+		
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/homeView.jsp");
+				.getRequestDispatcher("/WEB-INF/views/detailView.jsp");
     	
 		dispatcher.forward(req, resp);
 	}

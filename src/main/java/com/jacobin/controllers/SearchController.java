@@ -24,8 +24,8 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String productNameSearch = req.getParameter("pName");
-		req.setAttribute("loadMore", productNameSearch);
-
+		req.setAttribute("pName", productNameSearch);
+		
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		List<Product> listP = ProductDB.selectProductByName(productNameSearch);
