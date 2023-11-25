@@ -115,7 +115,7 @@ table.table .avatar {
     padding: 0 6px;
 }
 .pagination li a:hover {
-    color: #666;
+    color: #000;
 }	
 .pagination li.active a, .pagination li.active a.page-link {
     background: #03A9F4;

@@ -51,9 +51,7 @@ public class AddProductController extends HttpServlet {
 		String description = req.getParameter("description");
 		String size = req.getParameter("size");
 		String categoryIdString = req.getParameter("category");
-		
 		int categoryId = Integer.parseInt(categoryIdString);
-		
 		Category category = CategoryDB.selectCategoryById(categoryId);
 		
 		List<Product> listP = ProductDB.selectProductByIdDesc();
@@ -77,7 +75,7 @@ public class AddProductController extends HttpServlet {
 
 		S3Util.uploadFile(fileName, part.getInputStream());
 		
-		String url = "https://" + S3Util.AWS_BUCKET + ".s3.amazonaws.com/" + fileName;
+		String urlImage = "https://" + S3Util.AWS_BUCKET + ".s3.amazonaws.com/" + fileName;
 		
 		Product product = new Product();
 		product.setName(name);
@@ -86,9 +84,12 @@ public class AddProductController extends HttpServlet {
 		product.setDescription(description);
 		product.setSize(size);
 		product.setCategory(category);
-		product.setImage(url);
+		product.setImage(urlImage);
 		
 		ProductDB.insert(product);
+		
+		String message = "Thêm thành công sản phẩm có mã: " + idP;
+		req.setAttribute("message", message);
 		
 		doGet(req, resp);
 	}

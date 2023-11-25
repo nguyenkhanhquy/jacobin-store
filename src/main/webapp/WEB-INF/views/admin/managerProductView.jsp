@@ -42,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            <strong class="text-success">${message}</strong>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -64,17 +65,19 @@
                             <td>${p.size}</td>
                             <td>${p.price} VNĐ</td>
                             <td>
-                                <a href="loadProduct?pid=${p.productId}" class="edit" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="delete?pid=${p.productId}" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            	<a href="edit-product?editId=${p.productId}" class="edit" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Chỉnh sửa">&#xE254;</i></a>
+                                <a href="manager-product?deleteId=${p.productId}" class="delete" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Xoá">&#xE872;</i></a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Hiển thị <b>4</b> sản phẩm của mục <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
+            	<c:if test="${endP > 0}">
+            		<div class="hint-text">Mục số <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
+            	</c:if>       
                 <ul class="pagination">
                 	<c:if test="${tag > 1}">
                 		<li class="page-item"><a href="manager-product?index=${tag-1}">Lùi</a></li>
