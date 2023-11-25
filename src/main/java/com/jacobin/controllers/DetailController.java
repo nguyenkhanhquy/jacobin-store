@@ -39,7 +39,7 @@ public class DetailController extends HttpServlet{
 		}
 		
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/detailView.jsp");
+				.getRequestDispatcher("/WEB-INF/views/detailProductView.jsp");
     	
 		dispatcher.forward(req, resp);
 	}

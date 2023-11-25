@@ -80,7 +80,7 @@
                     </c:forEach> 
                 </div>
                 <!-- End Products -->
-                <button onclick="loadMore(${cId})" class="btn btn-primary">Load more</button>
+                <button onclick="loadMore(${cId})" class="btn btn-primary">Xem thêm</button>
             </div>
             <!-- End Slider and Products -->
         </div>

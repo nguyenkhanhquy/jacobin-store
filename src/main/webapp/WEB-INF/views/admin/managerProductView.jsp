@@ -46,7 +46,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Mã</th>
                         <th>Tên</th>
                         <th>Ảnh</th>
                         <th>Size</th>
@@ -79,15 +79,11 @@
             		<div class="hint-text">Mục số <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
             	</c:if>       
                 <ul class="pagination">
-                	<c:if test="${tag > 1}">
-                		<li class="page-item"><a href="manager-product?index=${tag-1}">Lùi</a></li>
-                	</c:if>
+                	<li class="page-item" ${tag > 1?'':'style="visibility: hidden;"'}><a href="manager-product?index=${tag-1}">Lùi</a></li>
                     <c:forEach begin="1" end="${endP}" var="i">
                     	<li class="page-item ${tag == i?'active':''}"><a href="manager-product?index=${i}" class="page-link">${i}</a></li>
                     </c:forEach>
-                    <c:if test="${tag < endP}">
-                    	<li class="page-item"><a href="manager-product?index=${tag+1}">Tiến</a></li>
-                    </c:if>
+                    <li class="page-item" ${tag < endP?'':'style="visibility: hidden;"'}><a href="manager-product?index=${tag+1}">Tiến</a></li>
                 </ul>
             </div>
         </div>

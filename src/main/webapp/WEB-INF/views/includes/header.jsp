@@ -14,7 +14,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Trang chủ</a></li>
                 
                 <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
                 	<li class="nav-item dropdown">
@@ -55,8 +55,12 @@
             <form action="search" class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
                     aria-label="Search" name="pName" value="${pName}">
-                <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
-            </form>
+                <button class="btn btn-outline-secondary me-2" type="submit">Tìm</button>
+            </form>    
+            <a class="btn btn-secondary btn-sm ml-3" href="cart">
+		        <i class="fa fa-shopping-cart"></i> Giỏ hàng
+		        <span class="badge badge-light">0</span>
+	       	</a>  
         </div>
     </div>
 </nav>
