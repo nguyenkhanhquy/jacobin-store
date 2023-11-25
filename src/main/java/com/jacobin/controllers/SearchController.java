@@ -30,7 +30,8 @@ public class SearchController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String productNameSearch = req.getParameter("pName");
-
+		req.setAttribute("pName", productNameSearch);
+		
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		List<Product> listP = ProductDB.selectProductByName(productNameSearch);
@@ -39,6 +40,5 @@ public class SearchController extends HttpServlet {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/homeView.jsp");
 
 		dispatcher.forward(req, resp);
-
 	}
 }

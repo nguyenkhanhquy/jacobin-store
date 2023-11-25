@@ -59,9 +59,9 @@ public class ProductDB {
     public static Product selectProductById(int productId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT p FROM Product p " +
-                "WHERE p.productID = :productID";
+                "WHERE p.productId = :productId";
         TypedQuery<Product> q = em.createQuery(qString, Product.class);
-        q.setParameter("productID", productId);
+        q.setParameter("productId", productId);
         try {
             Product product = q.getSingleResult();
             return product;
