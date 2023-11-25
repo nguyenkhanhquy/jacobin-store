@@ -23,14 +23,9 @@ public class SearchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		doPost(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		String productNameSearch = req.getParameter("pName");
-
+		req.setAttribute("pName", productNameSearch);
+		
 		List<Category> listC = CategoryDB.selectAllCategory();
 		req.setAttribute("ListC", listC);
 		List<Product> listP = ProductDB.selectProductByName(productNameSearch);
@@ -39,6 +34,11 @@ public class SearchController extends HttpServlet {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/homeView.jsp");
 
 		dispatcher.forward(req, resp);
+	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		doGet(req, resp);
 	}
 }

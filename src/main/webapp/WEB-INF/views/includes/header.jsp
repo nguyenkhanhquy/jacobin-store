@@ -14,12 +14,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Trang chủ</a></li>
                 
                 <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
-                	<li class="nav-item"><a class="nav-link" href="admin/manager-product">Quản lý sản phẩm</a></li>
-                	<li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
-                	<li class="nav-item"><a class="nav-link" href="#">Quản lý đơn hàng</a></li>
+                	<li class="nav-item dropdown">
+                		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                			<i class="fa-solid fa-toolbox">&nbsp;</i>Quản lý
+                		</a>
+                		<ul class="dropdown-menu">
+                			<li><a class="dropdown-item" href="#">Danh mục</a></li>
+		                	<li><a class="dropdown-item" href="admin/manager-product">Sản phẩm</a></li>
+		                	<li><a class="dropdown-item" href="#">Người dùng</a></li>
+		                	<li><a class="dropdown-item" href="#">Đơn hàng</a></li>
+                		</ul>
+                	</li>
                 </c:if>
                 
                 <li class="nav-item dropdown">
@@ -46,9 +54,13 @@
             </ul>
             <form action="search" class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
-                    aria-label="Search" name="pName">
-                <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
-            </form>
+                    aria-label="Search" name="pName" value="${pName}">
+                <button class="btn btn-outline-secondary me-2" type="submit">Tìm</button>
+            </form>    
+            <a class="btn btn-secondary btn-sm ml-3" href="cart">
+		        <i class="fa fa-shopping-cart"></i> Giỏ hàng
+		        <span class="badge badge-light">0</span>
+	       	</a>  
         </div>
     </div>
 </nav>

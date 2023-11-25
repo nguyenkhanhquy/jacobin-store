@@ -6,7 +6,7 @@
     <div class="list-group">
     	<a href="category" class="list-group-item list-group-item-dark">Tất cả danh mục</a>
         <c:forEach items="${ListC}" var="c">
-            <a href="category?cId=${c.categoryId}" class="list-group-item list-group-item-action">${c.name}</a>
+            <a href="category?cId=${c.categoryId}" class="list-group-item list-group-item-action ${tag == c.categoryId ? 'active':''}">${c.name}</a>
         </c:forEach>
     </div>
 </div>

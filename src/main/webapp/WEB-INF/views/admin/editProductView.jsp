@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Thêm sản phẩm</title>
+    <title>Chỉnh sửa sản phẩm</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -34,7 +34,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Thêm <b>Sản Phẩm</b></h2>
+                        <h2>Chỉnh sửa <b>Sản Phẩm</b></h2>
                     </div>
                     <div class="col-sm-6">
                     	<a href="manager-product"><button type="button" class="btn btn-primary">Về trang quản lý sản phẩm</button></a>
@@ -42,33 +42,38 @@
                 </div>
             </div>
         	<strong class="text-success">${message}</strong>
-        	<form action="add-product" method="post" enctype="multipart/form-data">
-                
+        	<form action="edit-product" method="post" enctype="multipart/form-data">
+
                 <div class="row">
                     <div class="col-sm-6">
+                    	<div class="form-group mb-4">
+	                        <label>Mã:</label>
+	                        <input name="id" type="text" class="form-control" value="${product.productId}" readonly>
+	                    </div>
+	                    
 	                    <div class="form-group mb-4">
 	                        <label>Tên:</label>
-	                        <input name="name" type="text" class="form-control" required>
+	                        <input name="name" type="text" class="form-control" value="${product.name}" required>
 	                    </div>
 
                         <div class="form-group mb-4">
                             <label>Size:</label>
-                        	<input name="size" type="text" class="form-control" required>
+                        	<input name="size" type="text" class="form-control" value="${product.size}" required>
                         </div>
                         
                         <div class="form-group mb-4">
                             <label>Giá:</label>
-                        	<input name="price" type="text" class="form-control" required>
+                        	<input name="price" type="text" class="form-control" value="${product.price}" required>
                         </div>
 
                         <div class="form-group mb-4">
                             <label>Tiêu đề:</label>
-                        	<textarea name="title" class="form-control" required></textarea>
+                        	<textarea name="title" class="form-control" required>${product.title}</textarea>
                         </div>
 
                         <div class="form-group mb-4">
                             <label>Mô tả:</label>
-                        	<textarea name="description" class="form-control" required></textarea>
+                        	<textarea name="description" class="form-control" required>${product.description}</textarea>
                         </div>
                     </div>
 
@@ -76,18 +81,23 @@
                     	<div class="form-group mb-4">
                             <label>Danh mục:</label>
 	                        <select name="category" class="form-select" required>
-	                            <option value="" selected disabled>Chọn một danh mục</option>
 	                            <c:forEach items="${ListC}" var="c">
-	                                <option value="${c.categoryId}">${c.name}</option>
+	                            	<c:if test="${product.getCategory().getCategoryId() == c.categoryId}">
+	                            		<option value="${c.categoryId}" selected>${c.name}</option>
+	                            	</c:if>
+	                            	<c:if test="${product.getCategory().getCategoryId() != c.categoryId}">
+	                            		 <option value="${c.categoryId}">${c.name}</option>
+	                            	</c:if>
 	                            </c:forEach>
 	                        </select>
                         </div>
                         
                         <div class="form-group mb-4" align="center">
+                        	<input type="hidden" name="imageOld" value="${product.image}">
                             <label id="file-input-label" for="file-input">
-		            			<img id="image-preview" src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" alt="Ảnh sản phẩm">
+		            			<img id="image-preview" src="${product.image}" alt="Ảnh sản phẩm">
 		            			<br><span class="btn btn-secondary mt-4">Thêm ảnh</span>     
-		            			<input type="file" id="file-input" name="file" accept="image/*" style="display:none;" required>
+		            			<input type="file" id="file-input" name="file" accept="image/*" style="display:none;">
 	        				</label>
                         </div>
                         <hr/>

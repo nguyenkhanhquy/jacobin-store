@@ -20,7 +20,7 @@
     <style>
         img {
             max-width: 100%;
-            max-height: 200px;
+            max-height: 100px;
             border: 1px solid #ddd;
         }
     </style>
@@ -42,10 +42,11 @@
                     </div>
                 </div>
             </div>
+            <strong class="text-success">${message}</strong>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Mã</th>
                         <th>Tên</th>
                         <th>Ảnh</th>
                         <th>Size</th>
@@ -64,25 +65,25 @@
                             <td>${p.size}</td>
                             <td>${p.price} VNĐ</td>
                             <td>
-                                <a href="loadProduct?pid=${p.productId}" class="edit" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="delete?pid=${p.productId}" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            	<a href="edit-product?editId=${p.productId}" class="edit" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Chỉnh sửa">&#xE254;</i></a>
+                                <a href="manager-product?deleteId=${p.productId}" class="delete" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Xoá">&#xE872;</i></a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+            	<c:if test="${endP > 0}">
+            		<div class="hint-text">Mục số <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
+            	</c:if>       
                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                	<li class="page-item" ${tag > 1?'':'style="visibility: hidden;"'}><a href="manager-product?index=${tag-1}">Lùi</a></li>
+                    <c:forEach begin="1" end="${endP}" var="i">
+                    	<li class="page-item ${tag == i?'active':''}"><a href="manager-product?index=${i}" class="page-link">${i}</a></li>
+                    </c:forEach>
+                    <li class="page-item" ${tag < endP?'':'style="visibility: hidden;"'}><a href="manager-product?index=${tag+1}">Tiến</a></li>
                 </ul>
             </div>
         </div>
