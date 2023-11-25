@@ -27,25 +27,41 @@ public class ManagerProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
-		String url = "/WEB-INF/views/admin/managerProductView.jsp";
-		
-		HttpSession session = req.getSession();
-		User userS = SessionUtil.getLoginedUser(session);
-		
-		if (userS.getRole().getRoleId() == 2) {
-			resp.sendRedirect(req.getContextPath() + "/home");
-			return;
-		} else {
-			List<Category> listC = CategoryDB.selectAllCategory();
-			req.setAttribute("ListC", listC);
-			List<Product> listP = ProductDB.selectAllProduct();
-	    	req.setAttribute("ListP", listP);
+		int count = ProductDB.getTotalProduct();
+    	int endPage = count/4;
+    	if (count % 4 != 0) {
+    		endPage ++;
+    	}
+    	req.setAttribute("endP", endPage);
+    	
+    	int index;
+		String indexPage = req.getParameter("index");
+		try {
+			index = Integer.parseInt(indexPage);
+		}
+		catch (NumberFormatException nfe) {
+			index = 1;
 		}
 		
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher(url);
+		if (index <= 0) {
+			index = 1;
+		} else if (index > endPage) {
+			index = endPage;
+		}
+		req.setAttribute("tag", index);
+		
+		List<Category> listC = CategoryDB.selectAllCategory();
+		req.setAttribute("ListC", listC);
+		List<Product> listP = ProductDB.pagingProduct(index);
+		req.setAttribute("ListP", listP);
     	
-		dispatcher.forward(req, resp);
+//    	List<Product> list = ProductDB.pagingProduct(1);
+//    	for (Product o: list ) {
+//    		System.out.println(o);
+//    	}
+    	
+    	String url = "/WEB-INF/views/admin/managerProductView.jsp";
+    	req.getRequestDispatcher(url).forward(req, resp);
 	}
 	
 	@Override

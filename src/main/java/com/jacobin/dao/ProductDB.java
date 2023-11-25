@@ -153,7 +153,7 @@ public class ProductDB {
         String qString = "SELECT p FROM Product p " +
                 "WHERE p.category.categoryId = :categoryId";
         TypedQuery<Product> q = em.createQuery(qString, Product.class)
-        		.setMaxResults(5);
+        		.setMaxResults(10);
         q.setParameter("categoryId", categoryId);
         try {
             List<Product> list = q.getResultList();
@@ -181,5 +181,36 @@ public class ProductDB {
         } finally {
             em.close();
         }
+    }
+    
+    public static int getTotalProduct() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT COUNT(p) FROM Product p";
+        TypedQuery<Long> q = em.createQuery(qString, Long.class);
+        try {
+            Long count = q.getSingleResult();
+            return count.intValue();
+        } catch (NoResultException e) {
+            return 0;
+        } finally {
+            em.close();
+        }		
+    }
+    
+    public static List<Product> pagingProduct(int index) {
+    	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT p FROM Product p " +
+        		"ORDER BY p.productId";
+        TypedQuery<Product> q = em.createQuery(qString, Product.class);
+        q.setFirstResult((index - 1) * 4); // Sử dụng setFirstResult để đặt OFFSET
+        q.setMaxResults(4); // Sử dụng setMaxResults để giới hạn số lượng hàng trả về
+        try {
+        	List<Product> list = q.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }	
     }
 }

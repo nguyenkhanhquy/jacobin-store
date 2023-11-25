@@ -20,7 +20,7 @@
     <style>
         img {
             max-width: 100%;
-            max-height: 200px;
+            max-height: 100px;
             border: 1px solid #ddd;
         }
     </style>
@@ -74,15 +74,17 @@
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <div class="hint-text">Hiển thị <b>4</b> sản phẩm của mục <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                	<c:if test="${tag > 1}">
+                		<li class="page-item"><a href="manager-product?index=${tag-1}">Lùi</a></li>
+                	</c:if>
+                    <c:forEach begin="1" end="${endP}" var="i">
+                    	<li class="page-item ${tag == i?'active':''}"><a href="manager-product?index=${i}" class="page-link">${i}</a></li>
+                    </c:forEach>
+                    <c:if test="${tag < endP}">
+                    	<li class="page-item"><a href="manager-product?index=${tag+1}">Tiến</a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>
