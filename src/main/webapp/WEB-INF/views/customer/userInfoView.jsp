@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Thông tin tài khoản</title>
+    <link rel="icon" href="resources/img/icon/favicon.ico" type="image/x-icon">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -56,7 +58,7 @@
                         </div>
 
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="diaChiEmail" placeholder="Email" name="email" value="${user.email}" required disabled> 
+                            <input type="email" class="form-control" id="diaChiEmail" placeholder="Email" name="email" value="${user.email}" required disabled> 
                             <label for="diaChiEmail">Email<span class="red">*</span></label>
                         </div>
 

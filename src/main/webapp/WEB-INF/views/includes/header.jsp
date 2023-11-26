@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home">
+        <a class="navbar-brand" href="home" style="margin: 0;">
             <img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="160">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -24,7 +24,7 @@
                 		<ul class="dropdown-menu">
                 			<li><a class="dropdown-item" href="#">Danh mục</a></li>
 		                	<li><a class="dropdown-item" href="admin/manager-product">Sản phẩm</a></li>
-		                	<li><a class="dropdown-item" href="#">Người dùng</a></li>
+		                	<li><a class="dropdown-item" href="admin/manager-user">Người dùng</a></li>
 		                	<li><a class="dropdown-item" href="#">Đơn hàng</a></li>
                 		</ul>
                 	</li>
