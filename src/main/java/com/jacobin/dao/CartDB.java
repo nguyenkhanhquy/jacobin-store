@@ -57,9 +57,9 @@ public class CartDB {
     public static Cart selectCartById(int cartId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT c FROM Cart c " +
-                "WHERE c.cartID = :cartID";
+                "WHERE c.cartID = :cartId";
         TypedQuery<Cart> q = em.createQuery(qString, Cart.class);
-        q.setParameter("cartID", cartId);
+        q.setParameter("cartId", cartId);
         try {
             Cart cart = q.getSingleResult();
             return cart;

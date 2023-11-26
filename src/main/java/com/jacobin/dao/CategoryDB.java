@@ -93,8 +93,8 @@ public class CategoryDB {
         String qString = "SELECT c FROM Category c";
         TypedQuery<Category> q = em.createQuery(qString, Category.class);
         try {
-        	List<Category> category = q.getResultList();
-            return category;
+        	List<Category> list = q.getResultList();
+            return list;
         } catch (NoResultException e) {
             return null;
         } finally {
