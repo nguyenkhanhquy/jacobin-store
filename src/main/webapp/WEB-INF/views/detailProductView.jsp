@@ -31,11 +31,13 @@
 	<jsp:include page="includes/header.jsp" />
 	<!-- End Navbar -->
 
-	<div class="container">
+	<div class="container mt-4">
 		<div class="row">
             <!-- Menu left -->
 			<jsp:include page="includes/left.jsp" />
 			<!-- End Menu left -->
+			
+			<!-- Detail Product -->
 			<div class="col-sm-9">
 				<div class="container">
 					<div class="card">
@@ -44,7 +46,7 @@
 								<article class="gallery-wrap">
 									<div class="img-big-wrap">
 										<div>
-											<a href="#"><img id="image-preview" src="${product.image}"></a>
+											<img id="image-preview" src="${product.image}">
 										</div>
 									</div>
 									<!-- slider-product.// -->
@@ -106,6 +108,7 @@
 					<!-- card.// -->
 				</div>
 			</div>
+			<!-- End Detail Product -->
 		</div>
 	</div>
 

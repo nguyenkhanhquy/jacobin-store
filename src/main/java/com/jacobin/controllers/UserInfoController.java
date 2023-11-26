@@ -50,9 +50,9 @@ public class UserInfoController extends HttpServlet {
 		
 		
 		String message = "";
-		if (!email.equals(userS.getEmail()) && UserDB.checkExists(userS.getEmail())) {
+		if (!email.equals(userS.getEmail()) && UserDB.checkExists(email)) {
 			message = "Địa chỉ Email đã tồn tại.<br>" + "Vui lòng điền một địa chỉ Email khác.";
-		} else if (!phone.equals(userS.getPhone()) && UserDB.checkExists(userS.getPhone())) {
+		} else if (!phone.equals(userS.getPhone()) && UserDB.checkExists(phone)) {
 			message = "Số điện thoại đã tồn tại.<br>" + "Vui lòng điền số điện thoại khác.";
 		} else {
 			url = "/WEB-INF/views/customer/successView.jsp";
@@ -63,6 +63,7 @@ public class UserInfoController extends HttpServlet {
 			userS.setEmail(email);
 			userS.setPhone(phone);
 			UserDB.update(userS);
+			message = "Cập nhật thành công!";
 		}
 		
 		User userR = new User();

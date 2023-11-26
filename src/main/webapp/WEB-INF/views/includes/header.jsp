@@ -4,8 +4,8 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img class="logo" src="resources/img/logo/logo.jpg" alt="logo" width="120">
+        <a class="navbar-brand" href="home">
+            <img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="160">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

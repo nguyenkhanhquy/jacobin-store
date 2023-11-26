@@ -64,7 +64,7 @@
                     <c:forEach items="${ListP}" var="p">
                         <div class="product col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="${p.image}" alt=""></a>
+                                <a href="detail?pId=${p.productId}"><img class="card-img-top" src="${p.image}" alt=""></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="detail?pId=${p.productId}">${p.name}</a>
@@ -73,7 +73,10 @@
                                     <p class="card-text">${p.title}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                    <a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
+                                	<a href="#" class="btn btn-outline-primary">
+                                		<i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng
+                                	</a>
                                 </div>
                             </div>
                         </div>
