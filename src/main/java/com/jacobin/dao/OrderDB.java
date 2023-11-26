@@ -57,9 +57,9 @@ public class OrderDB {
     public static Order selectOrderById(int orderId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT o FROM Order o " +
-                "WHERE o.orderID = :orderID";
+                "WHERE o.orderId = :orderId";
         TypedQuery<Order> q = em.createQuery(qString, Order.class);
-        q.setParameter("orderID", orderId);
+        q.setParameter("orderId", orderId);
         try {
             Order order = q.getSingleResult();
             return order;

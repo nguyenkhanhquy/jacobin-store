@@ -27,7 +27,6 @@ public class CookieFilter implements Filter {
 		
 		// Lấy đối tượng HttpSession từ request
 		HttpSession session = req.getSession();
-
 		User userInSession = SessionUtil.getLoginedUser(session);
 		
 		if (userInSession != null) {

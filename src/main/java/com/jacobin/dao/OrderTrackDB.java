@@ -57,7 +57,7 @@ public class OrderTrackDB {
     public static OrderTrack selectOrderTrackById(OrderTrack orderTrackId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT o FROM OrderTrack o " +
-                "WHERE o.orderTrack = :orderTrack";
+                "WHERE o.orderTrackId = :orderTrackId";
         TypedQuery<OrderTrack> q = em.createQuery(qString, OrderTrack.class);
         q.setParameter("orderTrackId", orderTrackId);
         try {
