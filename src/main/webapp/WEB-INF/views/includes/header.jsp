@@ -22,7 +22,7 @@
                 			<i class="fa-solid fa-toolbox">&nbsp;</i>Quản lý
                 		</a>
                 		<ul class="dropdown-menu">
-                			<li><a class="dropdown-item" href="#">Danh mục</a></li>
+                			<li><a class="dropdown-item" href="admin/manager-category">Danh mục</a></li>
 		                	<li><a class="dropdown-item" href="admin/manager-product">Sản phẩm</a></li>
 		                	<li><a class="dropdown-item" href="#">Người dùng</a></li>
 		                	<li><a class="dropdown-item" href="#">Đơn hàng</a></li>
