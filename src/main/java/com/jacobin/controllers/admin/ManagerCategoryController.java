@@ -10,12 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jacobin.dao.CategoryDB;
-import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Category;
-import com.jacobin.models.Product;
 
-@WebServlet("/admin/manager-category")
+@WebServlet(urlPatterns = {"/admin/manager-category"})
 public class ManagerCategoryController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -32,7 +31,7 @@ public class ManagerCategoryController extends HttpServlet {
 			message = "Xoá thành công danh mục có mã: " + deleteId;
 		}
 		
-		int count = ProductDB.getTotalProduct();
+		int count = CategoryDB.getTotalCategory();
 		int endPage = count/4;
     	if (count % 4 != 0) {
     		endPage ++;
@@ -55,7 +54,7 @@ public class ManagerCategoryController extends HttpServlet {
 			}
 			req.setAttribute("tag", index);
 			
-			List<Category> listC = CategoryDB.selectAllCategory();
+			List<Category> listC = CategoryDB.pagingCategory(index);
 			req.setAttribute("ListC", listC);
 		}
 		

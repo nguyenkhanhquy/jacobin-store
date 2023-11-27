@@ -16,14 +16,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <link href="../resources/css/managerProduct.css" rel="stylesheet" type="text/css" />
-    <style>
-        img {
-            max-width: 100%;
-            max-height: 100px;
-            border: 1px solid #ddd;
-        }
-    </style>
+    <link href="../resources/css/managerCategory.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -66,8 +59,22 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <div class="clearfix">
+            	<c:if test="${endP > 0}">
+            		<div class="hint-text">Mục số <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
+            	</c:if>       
+                <ul class="pagination">
+                	<li class="page-item" ${tag > 1?'':'style="visibility: hidden;"'}><a href="manager-category?index=${tag-1}">Lùi</a></li>
+                    <c:forEach begin="1" end="${endP}" var="i">
+                    	<li class="page-item ${tag == i?'active':''}"><a href="manager-category?index=${i}" class="page-link">${i}</a></li>
+                    </c:forEach>
+                    <li class="page-item" ${tag < endP?'':'style="visibility: hidden;"'}><a href="manager-category?index=${tag+1}">Tiến</a></li>
+                </ul>
+            </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>

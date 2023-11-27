@@ -13,19 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
-    <link href="../resources/css/managerProduct.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/css/managerCategory.css" rel="stylesheet" type="text/css" />
     
-    <style>
-        #image-preview {
-            max-width: 100%;
-            max-height: 300px;
-            border: 1px solid #ddd;
-        }
-
-        #file-input-label {
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -42,7 +31,7 @@
                 </div>
             </div>
         	<strong class="text-success">${message}</strong>
-        	<form action="edit-category" method="post" enctype="multipart/form-data">
+        	<form action="edit-category" method="post">
                 <div class="row">
                     <div class="col-sm-6">
                     	<div class="form-group mb-4">
@@ -62,7 +51,8 @@
 			</form>
         </div>
     </div>
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

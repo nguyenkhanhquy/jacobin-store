@@ -13,19 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
-    <link href="../resources/css/managerProduct.css" rel="stylesheet" type="text/css" />
-    
-    <style>
-        #image-preview {
-            max-width: 100%;
-            max-height: 300px;
-            border: 1px solid #ddd;
-        }
+    <link href="../resources/css/managerCategory.css" rel="stylesheet" type="text/css" />
 
-        #file-input-label {
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -42,7 +31,8 @@
                 </div>
             </div>
         	<strong class="text-success">${message}</strong>
-        	<form action="add-category" method="post" enctype="multipart/form-data">
+        	<strong class="text-danger">${messageError}</strong>
+        	<form action="add-category" method="post">
                 
                 <div class="row">
                     <div class="col-sm-6">
@@ -52,7 +42,6 @@
 	                        <hr/>
                         	<button class="w-100 btn btn-lg btn-success mb-2" type="submit">Xác nhận</button>
 	                    </div>
-	                    
                     </div>
                 </div>
 			</form>
