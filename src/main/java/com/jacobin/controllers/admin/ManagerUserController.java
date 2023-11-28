@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jacobin.dao.CartDB;
 import com.jacobin.dao.UserDB;
+import com.jacobin.models.Cart;
 import com.jacobin.models.User;
 import com.jacobin.utils.SessionUtil;
 
@@ -34,6 +36,8 @@ public class ManagerUserController extends HttpServlet {
 			User userInSession = SessionUtil.getLoginedUser(session);
 			
 			if (user != null && user.getUserName() != userInSession.getUserName()) {
+				Cart cart = CartDB.selectCartByUser(user);
+				CartDB.delete(cart);
 				UserDB.delete(user);
 				message = "Xoá thành công người dùng có mã: " + deleteId;
 			}

@@ -1,6 +1,8 @@
 package com.jacobin.models;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name =  "lineItem")
+@Table(name = "lineitem")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,18 +33,20 @@ public class LineItem implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int lineItemId;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "product_id")
-	private Product item;
+	private Product product;
 	
 	@Column(name = "quantity")
-	private int quantity;
+	private int quantity = 1;
 	
-	@ManyToOne
-	@JoinColumn(name = "cart_id")
-	private Cart cart;		
-	
-	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
+	public double getTotal() {
+        double total = product.getPrice() * quantity;
+        return total;
+    }
+
+    public String getTotalCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return currency.format(this.getTotal());
+    }
 }

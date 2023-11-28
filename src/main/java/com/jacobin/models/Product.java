@@ -1,6 +1,8 @@
 package com.jacobin.models;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,4 +56,9 @@ public class Product implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
+	
+	public String getPriceCurrencyFormat() {
+		NumberFormat currency = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+		return currency.format(price);
+	}
 }

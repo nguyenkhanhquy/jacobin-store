@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 2em;
+	margin-right: 2em;
+	width: 600px;
+	background-color: #eee;
+}
+
+h1 {
+	font-size: 140%;
+	color: teal;
+	margin-bottom: .5em;
+}
+
+h2 {
+	font-size: 120%;
+	color: teal;
+	margin-bottom: .5em;
+}
+
+label {
+	float: left;
+	width: 7em;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+	width: 20em;
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+span {
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+br {
+	clear: both;
+}
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.cd-list {
+	width: 50em;
+}
+
+.cart-list {
+	width: 50em;
+}
+
+th,
+td {
+	border: 1px solid black;
+	text-align: left;
+	padding: .5em;
+}
+
+.pad_top {
+	padding-top: 0.25em;
+}
+
+.margin_bottom {
+	margin-bottom: 0.5em;
+}
+
+.margin_left {
+	margin-left: 0.5em;
+}
+
+.mess {
+	color: red;
+}
+
+.btn {
+	cursor: pointer;
+}
+
+.align_left {
+	text-align: left;
+}
+
+.align_right {
+	text-align: right;
+}
+
+.align_center {
+	text-align: center;
+}
+
+#quantity {
+	margin-left: 0em;
+    margin-bottom: 0em;
+	width: 2em;
+}

@@ -1,8 +1,14 @@
 package com.jacobin.models;
 
+import static javax.persistence.FetchType.EAGER;
+
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +27,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "order_detail")
+@Table(name = "orderdetail")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,11 +45,12 @@ public class Order implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "order")
+	@OneToMany(fetch=EAGER, cascade=CascadeType.PERSIST)
 	private List<LineItem> items;
 	
 	@Column(name = "date")
-	private String date;
+	@Temporal(TemporalType.DATE)
+	private Date date;
 	
 	@Column(name = "payment_method")
 	private String paymentMethod;
@@ -52,4 +61,25 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "order_track_id")
 	private OrderTrack orderTrack;
+	
+    public String getOrderDateDefaultFormat() {
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        String invoiceDateFormatted = dateFormat.format(date);
+        return invoiceDateFormatted;
+    }
+	
+    public double getOrderTotal() {
+        double invoiceTotal = 0.0;
+        for (LineItem item : items) {
+            invoiceTotal += item.getTotal();
+        }
+        return invoiceTotal;
+    }
+
+    public String getOrderTotalCurrencyFormat() {
+        double total = this.getOrderTotal();
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        String formattedTotal = currency.format(total);
+        return formattedTotal;
+    }
 }

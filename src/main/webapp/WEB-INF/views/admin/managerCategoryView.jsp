@@ -9,7 +9,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Quản lí danh mục</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -28,10 +27,12 @@
                         <h2>Quản lý <b>Danh mục</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="add-category" class="btn btn-success" data-toggle="modal">
-                        	<i class="material-icons">&#xE147;</i> <span>Thêm danh mục mới</span>
+                        <a href="add-category" class="btn btn-outline-success rounded">
+                        	<i class="fa-solid fa-circle-plus">&nbsp;</i><strong>Thêm danh mục mới</strong>
                         </a>
-                    	<a href="../home"><button type="button" class="btn btn-primary">Về trang chủ</button></a>
+                    	<a href="../home" class="btn btn-outline-primary rounded">
+                    		<i class="fa-solid fa-house">&nbsp;</i><strong>Về trang chủ</strong>
+                    	</a>              
                     </div>
                 </div>
             </div>
@@ -50,10 +51,12 @@
                             <td>${c.categoryId}</td>
                             <td>${c.name}</td>
                             <td>
-                            	<a href="edit-category?editId=${c.categoryId}" class="edit" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Chỉnh sửa">&#xE254;</i></a>
-                                <a href="manager-category?deleteId=${c.categoryId}" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Xoá">&#xE872;</i></a>
+                            	<a href="edit-category?editId=${c.categoryId}" class="edit">
+                            		<i class="fa-solid fa-pen-to-square" style="font-size: 18px;" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                            	</a>
+                            	<a href="manager-category?deleteId=${c.categoryId}" class="delete">
+                                	<i class="fa-solid fa-trash" style="font-size: 18px;" data-toggle="tooltip" title="Xoá"></i>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>

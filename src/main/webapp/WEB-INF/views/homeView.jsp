@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -44,13 +43,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="resources/img/slider/1.jpg" class="d-block w-100" alt="...">
+                            <img src="resources/img/slider/1.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="resources/img/slider/2.jpg" class="d-block w-100" alt="...">
+                            <img src="resources/img/slider/2.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="resources/img/slider/3.jpg" class="d-block w-100" alt="...">
+                            <img src="resources/img/slider/3.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -75,14 +74,20 @@
                                     <h4 class="card-title">
                                         <a href="detail?pId=${p.productId}">${p.name}</a>
                                     </h4>
-                                    <h5><fmt:formatNumber type="number" value="${p.price}" pattern="#,##0" /> VNĐ</h5>
+                                    <h5>${p.priceCurrencyFormat}</h5>
                                     <p class="card-text">${p.title}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
+                                	<a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
+                                	<form action="cart" method="post" style="display: inline-block;">
+                                		<input type="hidden" name="action" value="add">
+								        <input type="hidden" name="productId" value="${p.productId}">
+								        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng</button>
+							      	</form>
+                                    <%-- <a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
                                 	<a href="#" class="btn btn-outline-primary">
                                 		<i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng
-                                	</a>
+                                	</a> --%>
                                 </div>
                             </div>
                         </div>

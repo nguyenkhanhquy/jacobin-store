@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-sm-6">
                         <a href="add-product" class="btn btn-outline-success rounded">
-                        	<i class="fa-solid fa-circle-plus">&nbsp;</i><strong>Thêm người sản phẩm mới</strong>
+                        	<i class="fa-solid fa-circle-plus">&nbsp;</i><strong>Thêm sản phẩm mới</strong>
                         </a>
                     	<a href="../home" class="btn btn-outline-primary rounded">
                     		<i class="fa-solid fa-house">&nbsp;</i><strong>Về trang chủ</strong>
@@ -66,7 +66,7 @@
                                 <img src="${p.image}">
                             </td>
                             <td>${p.getCategory().getName()}</td>
-                            <td>${p.price} VNĐ</td>
+                            <td>${p.priceCurrencyFormat}</td>
                             <td>
                             	<a href="edit-product?editId=${p.productId}" class="edit">
                             		<i class="fa-solid fa-pen-to-square" style="font-size: 18px;" data-toggle="tooltip" title="Chỉnh sửa"></i>
