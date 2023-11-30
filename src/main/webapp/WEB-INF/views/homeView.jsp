@@ -21,14 +21,22 @@
 	<!-- Navbar -->
 	<jsp:include page="includes/header.jsp" />
 	<!-- End Navbar -->
-
+	
     <!-- Page content -->
     <div class="container mt-4">
         <div class="row">
-            <!-- Menu left -->
-			<jsp:include page="includes/left.jsp" />
-			<!-- End Menu left -->
-
+        	<c:if test="${loginedUser.role.roleId != 1}">
+	            <!-- Menu left -->
+				<jsp:include page="includes/left.jsp" />
+				<!-- End Menu left -->
+			</c:if>
+			
+			<c:if test="${loginedUser.role.roleId == 1}">
+	            <!-- Menu left -->
+				<jsp:include page="includes/adminLeft.jsp" />
+				<!-- End Menu left -->
+			</c:if>
+			
             <!-- Slider and Products -->
             <div class="col-lg-9">
                 <!-- Slider -->
@@ -64,37 +72,40 @@
                     </button>
                 </div>
                 <!-- End Slider -->
-                <!-- Products -->
-                <div id="content" class="row">
-                    <c:forEach items="${ListP}" var="p">
-                        <div class="product col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                                <a href="detail?pId=${p.productId}"><img class="card-img-top" src="${p.image}" alt=""></a>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="detail?pId=${p.productId}">${p.name}</a>
-                                    </h4>
-                                    <h5>${p.priceCurrencyFormat}</h5>
-                                    <p class="card-text">${p.title}</p>
-                                </div>
-                                <div class="card-footer">
-                                	<a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
-                                	<form action="cart" method="post" style="display: inline-block;">
-                                		<input type="hidden" name="action" value="add">
-								        <input type="hidden" name="productId" value="${p.productId}">
-								        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng</button>
-							      	</form>
-                                    <%-- <a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
-                                	<a href="#" class="btn btn-outline-primary">
-                                		<i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng
-                                	</a> --%>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach> 
-                </div>
-                <!-- End Products -->
-                <button onclick="loadMore(${cId})" class="btn btn-primary">Xem thêm</button>
+                
+                <c:if test="${loginedUser.role.roleId != 1}">
+	                <!-- Products -->
+	                <div id="content" class="row">
+	                    <c:forEach items="${ListP}" var="p">
+	                        <div class="product col-lg-4 col-md-6 mb-4">
+	                            <div class="card h-100">
+	                                <a href="detail?pId=${p.productId}"><img class="card-img-top" src="${p.image}" alt=""></a>
+	                                <div class="card-body">
+	                                    <h4 class="card-title">
+	                                        <a href="detail?pId=${p.productId}">${p.name}</a>
+	                                    </h4>
+	                                    <h5>${p.priceCurrencyFormat}</h5>
+	                                    <p class="card-text">${p.title}</p>
+	                                </div>
+	                                <div class="card-footer">
+	                                	<a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
+	                                	<form action="cart" method="post" style="display: inline-block;">
+	                                		<input type="hidden" name="action" value="add">
+									        <input type="hidden" name="productId" value="${p.productId}">
+									        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng</button>
+								      	</form>
+	                                    <%-- <a href="detail?pId=${p.productId}" class="btn btn-outline-dark">Chi tiết</a>
+	                                	<a href="#" class="btn btn-outline-primary">
+	                                		<i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng
+	                                	</a> --%>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </c:forEach> 
+	                </div>
+	                <!-- End Products -->
+	                <button onclick="loadMore(${cId})" class="btn btn-primary">Xem thêm</button>
+	        	</c:if>
             </div>
             <!-- End Slider and Products -->
         </div>
@@ -104,7 +115,7 @@
     <!-- Footer -->
     <jsp:include page="includes/footer.jsp" />
     <!-- End footer -->
-    
+
     <% boolean isSearchPage = false; %>
     
     <%

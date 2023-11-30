@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "orderdetail")
+@Table(name = "customer_order")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -69,11 +69,11 @@ public class Order implements Serializable {
     }
 	
     public double getOrderTotal() {
-        double invoiceTotal = 0.0;
+        double orderTotal = 0.0;
         for (LineItem item : items) {
-            invoiceTotal += item.getTotal();
+        	orderTotal += item.getTotal();
         }
-        return invoiceTotal;
+        return orderTotal;
     }
 
     public String getOrderTotalCurrencyFormat() {

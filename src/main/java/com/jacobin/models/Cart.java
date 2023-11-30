@@ -1,8 +1,10 @@
 package com.jacobin.models;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.jacobin.dao.LineItemDB;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +48,19 @@ public class Cart implements Serializable {
     public int getCount() {
         return items.size();
     }
+    
+    public double getTotal() {
+        double total = 0.0;
+        for (LineItem item : items) {
+        	total += item.getTotal();
+        }
+        return total;
+    }
+    
+    public String getTotalCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return currency.format(this.getTotal());
+    }
 
     public void addItem(LineItem item) {
         int productId = item.getProduct().getProductId();
@@ -53,10 +70,12 @@ public class Cart implements Serializable {
             	int quantityCartItem = cartItem.getQuantity();
         		quantity += quantityCartItem;
                 cartItem.setQuantity(quantity);
+                LineItemDB.update(cartItem);
                 return;
             }
         }
         items.add(item);
+        LineItemDB.insert(item);
     }
     
     public void updateItem(LineItem item) {
@@ -69,20 +88,22 @@ public class Cart implements Serializable {
             		quantity = quantityCartItem;
             	}
             	cartItem.setQuantity(quantity);
+            	LineItemDB.update(cartItem);
                 return;
             }
         }
         items.add(item);
     }
 
-    public void removeItem(LineItem item) {
+    public int removeItem(LineItem item) {
         int productId = item.getProduct().getProductId();
         for (int i = 0; i < items.size(); i++) {
             LineItem lineItem = items.get(i);
             if (lineItem.getProduct().getProductId() == productId) {
                 items.remove(i);
-                return;
+                return lineItem.getLineItemId();
             }
         }
+		return 0;
     }
 }

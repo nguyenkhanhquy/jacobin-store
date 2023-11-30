@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jacobin.dao.CartDB;
+import com.jacobin.dao.LineItemDB;
 import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Cart;
 import com.jacobin.models.LineItem;
@@ -25,32 +26,26 @@ public class CartController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 
-		String url = "/WEB-INF/views/_cartView.jsp";
+		String url = "/WEB-INF/views/cartView.jsp";
+		
+		HttpSession	session = req.getSession();
+		
+		// Lấy thông tin giỏ hàng của người dùng
+		Cart cart = CartDB.selectCartByUser(SessionUtil.getLoginedUser(session));
+		session.setAttribute("cart", cart);
 
 		String action = req.getParameter("action");
 		if (action == null) {
 			action = "view";
 		}
+		
+//		HttpSession session = req.getSession();
+//		Cart cart = (Cart) session.getAttribute("cart");
 
 		if (action.equals("add") || action.equals("update")) {
 			String productIdString = req.getParameter("productId");
 			int productId = Integer.parseInt(productIdString);
 			String quantityString = req.getParameter("quantity");
-
-			HttpSession session = req.getSession();
-			Cart cart;
-			final Object lock = req.getSession().getId().intern();
-			synchronized (lock) {
-				cart = (Cart) session.getAttribute("cart");
-			}
-			
-//			HttpSession session = req.getSession();
-//			Cart cart;
-//			cart = CartDB.selectCartByUser(SessionUtil.getLoginedUser(session));
-//
-			if (cart == null) {
-				cart = new Cart();
-			}
 
 			int quantity;
 			if (action.equals("add")) {
@@ -77,15 +72,14 @@ public class CartController extends HttpServlet {
 				} else {
 					cart.updateItem(lineItem);
 				}
+				CartDB.update(cart);
 			} else if (quantity == 0) {
-				cart.removeItem(lineItem);
+				int lineItemId = cart.removeItem(lineItem);
+				CartDB.update(cart);
+				LineItemDB.delete(LineItemDB.selectLineItemById(lineItemId));
 			}
 
-			synchronized (lock) {
-				session.setAttribute("cart", cart);
-			}
-//			CartDB.update(cart);
-
+			session.setAttribute("cart", cart);
 			resp.sendRedirect("cart");
 			return;
 		} else if (action.equals("checkout")) {
@@ -95,6 +89,7 @@ public class CartController extends HttpServlet {
 			return;
 		}
 		
+		session.setAttribute("cart", cart);
 		req.getRequestDispatcher(url).forward(req, resp);
 	}
 

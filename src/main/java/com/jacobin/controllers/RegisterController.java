@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jacobin.dao.CartDB;
 import com.jacobin.dao.RoleDB;
 import com.jacobin.dao.UserDB;
+import com.jacobin.models.Cart;
 import com.jacobin.models.Role;
 import com.jacobin.models.User;
 import com.jacobin.utils.PasswordEncryptorUtil;
@@ -78,6 +80,10 @@ public class RegisterController extends HttpServlet {
 			password = PasswordEncryptorUtil.toSHA1(password);
 			user.setPassword(password);
 			UserDB.insert(user);
+			
+			Cart cart = new Cart();
+			cart.setUser(user);
+			CartDB.insert(cart);
 			
 			// Gửi email đến email của user
 			String to = email;

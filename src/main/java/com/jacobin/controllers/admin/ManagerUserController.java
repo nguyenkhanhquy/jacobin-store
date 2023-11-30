@@ -36,8 +36,10 @@ public class ManagerUserController extends HttpServlet {
 			User userInSession = SessionUtil.getLoginedUser(session);
 			
 			if (user != null && user.getUserName() != userInSession.getUserName()) {
-				Cart cart = CartDB.selectCartByUser(user);
-				CartDB.delete(cart);
+				if (user.getRole().getRoleId() != 1) {
+					Cart cart = CartDB.selectCartByUser(user);
+					CartDB.delete(cart);
+				}
 				UserDB.delete(user);
 				message = "Xoá thành công người dùng có mã: " + deleteId;
 			}

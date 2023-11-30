@@ -16,7 +16,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Trang chủ</a></li>
                 
-                <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
+                <%-- <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
                 	<li class="nav-item dropdown">
                 		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 			<i class="fa-solid fa-toolbox">&nbsp;</i>Quản lý
@@ -28,7 +28,7 @@
 		                	<li><a class="dropdown-item" href="#">Đơn hàng</a></li>
                 		</ul>
                 	</li>
-                </c:if>
+                </c:if> --%>
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,15 +52,21 @@
                     </ul>
                 </li>
             </ul>
-            <form action="search" class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
-                    aria-label="Search" name="pName" value="${pName}">
-                <button class="btn btn-outline-secondary me-2" type="submit">Tìm</button>
-            </form>    
-            <a class="btn btn-secondary btn-sm ml-3" href="cart">
-		        <i class="fa fa-shopping-cart"></i> Giỏ hàng
-		        <span class="badge badge-light">0</span>
-	       	</a>  
+            <c:if test="${loginedUser.role.roleId != 1}">
+	            <form action="search" class="d-flex" role="search">
+	                <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm"
+	                    aria-label="Search" name="pName" value="${pName}">
+	                <button class="btn btn-outline-success me-2" type="submit">Tìm</button>
+	            </form>
+            	<a class="btn btn-success position-relative" href="cart">
+		        	<i class="fa fa-shopping-cart">&nbsp;</i>Giỏ hàng
+		        	<c:if test="${loginedUser != null}">
+				        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+							${cart.count}
+						</span>
+					</c:if>
+		       	</a> 
+            </c:if>          
         </div>
     </div>
 </nav>

@@ -17,7 +17,7 @@
 
 <body>
     <div class="form-success text-center m-auto">
-        <a href="home"><img class="logo mb-4" src="resources/img/logo/logo.jpg" alt="logo" width="150"></a>
+        <a href="home"><img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="280"></a>
         <h1 class="h3 mb-3 fw-normal">${message}</h1>
 	    <p>Sẽ tự động chuyển về trang chủ sau 3s.</p>
 	    <a href="home" class="w-100 btn btn-lg btn-primary mb-2">Trang chủ</a>

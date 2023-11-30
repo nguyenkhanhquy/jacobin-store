@@ -37,6 +37,7 @@
                 </div>
             </div>
             <strong class="text-success">${message}</strong>
+            <strong class="text-danger">${messageError}</strong>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

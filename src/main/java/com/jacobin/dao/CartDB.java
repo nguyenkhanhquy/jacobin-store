@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import com.jacobin.models.Cart;
+import com.jacobin.models.LineItem;
 import com.jacobin.models.User;
 
 public class CartDB {
@@ -77,6 +78,22 @@ public class CartDB {
                 "WHERE c.user = :user";
         TypedQuery<Cart> q = em.createQuery(qString, Cart.class);
         q.setParameter("user", user);
+        try {
+            Cart cart = q.getSingleResult();
+            return cart;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static Cart selectCartByLineItem(LineItem item) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT c FROM Cart c " +
+                "WHERE c.items = :item";
+        TypedQuery<Cart> q = em.createQuery(qString, Cart.class);
+        q.setParameter("item", item);
         try {
             Cart cart = q.getSingleResult();
             return cart;

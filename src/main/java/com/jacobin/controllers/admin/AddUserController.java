@@ -77,9 +77,11 @@ public class AddUserController extends HttpServlet {
 			user.setPassword(password);
 			UserDB.insert(user);
 			
-			Cart cart = new Cart();
-			cart.setUser(user);
-			CartDB.insert(cart);
+			if (user.getRole().getRoleId() != 1) {
+				Cart cart = new Cart();
+				cart.setUser(user);
+				CartDB.insert(cart);
+			}			
 			
 			req.removeAttribute("user");
 		}

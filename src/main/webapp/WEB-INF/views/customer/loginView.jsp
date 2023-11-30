@@ -19,7 +19,7 @@
 	<main class="form-signin w-100 m-auto">
 		<form class="text-center" action="login" method="post">
 
-			<a href="home"><img class="logo mb-4" src="resources/img/logo/logo.jpg" alt="logo" width="150"></a>
+			<a href="home"><img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="280"></a>
 
 			<h1 class="h3 mb-3 fw-normal">ĐĂNG NHẬP</h1>
 

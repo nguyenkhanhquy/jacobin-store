@@ -22,13 +22,19 @@ public class ManagerCategoryController extends HttpServlet {
 			throws ServletException, IOException {
 	
 		String message = "";
+		String messageError = "";
 		
 		String deleteIdString = req.getParameter("deleteId");
 		if (deleteIdString != null) {
 			int deleteId = Integer.parseInt(deleteIdString);
 			Category category = CategoryDB.selectCategoryById(deleteId);	
-			CategoryDB.delete(category);
-			message = "Xoá thành công danh mục có mã: " + deleteId;
+			try {
+				CategoryDB.delete(category);
+				message = "Xoá thành công danh mục có mã: " + deleteId;
+			}
+			catch (Exception e) {
+				messageError = "Trong danh mục có mã " + deleteId + " vẫn còn sản phẩm, hãy xoá sản phẩm trước!";
+			}
 		}
 		
 		int count = CategoryDB.getTotalCategory();
@@ -59,6 +65,7 @@ public class ManagerCategoryController extends HttpServlet {
 		}
 		
 		req.setAttribute("message", message);
+		req.setAttribute("messageError", messageError);
     	String url = "/WEB-INF/views/admin/managerCategoryView.jsp";
     	req.getRequestDispatcher(url).forward(req, resp);
 	}

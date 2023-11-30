@@ -21,7 +21,6 @@
 	<style>
         #image-preview {
             max-width: 100%;
-            max-height: 100%;
             border: 1px solid #ddd;
         }
     </style>
@@ -76,29 +75,21 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-5">
-											<dl class="param param-inline">
-												<dt>Số lượng:</dt>
-												<dd>
-													<select class="form-control form-control-sm"
-														style="width: 70px;">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-													</select>
-												</dd>
-											</dl>
-											<!-- item-property .// -->
+											Size: ${product.size}
+										<!-- item-property .// -->
 										</div>
 										<!-- col.// -->
 
 									</div>
 									<!-- row.// -->
 									<hr>
-									<a href="#" class="btn btn-lg btn-primary text-uppercase">
-										Thanh toán </a> <a href="#"
-										class="btn btn-lg btn-outline-primary text-uppercase"> <i
-										class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
-									</a>
+									<form action="cart" method="post" style="display: inline-block;">
+                                		<input type="hidden" name="action" value="add">
+								        <input type="hidden" name="productId" value="${product.productId}">
+								        <button class="btn btn-lg btn-outline-primary text-uppercase" type="submit">
+								        	<i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng
+								        </button>
+							      	</form>
 								</article>
 								<!-- card-body.// -->
 							</aside>
