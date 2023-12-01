@@ -16,19 +16,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Trang chủ</a></li>
                 
-                <%-- <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() == 1}">
-                	<li class="nav-item dropdown">
-                		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                			<i class="fa-solid fa-toolbox">&nbsp;</i>Quản lý
-                		</a>
-                		<ul class="dropdown-menu">
-                			<li><a class="dropdown-item" href="admin/manager-category">Danh mục</a></li>
-		                	<li><a class="dropdown-item" href="admin/manager-product">Sản phẩm</a></li>
-		                	<li><a class="dropdown-item" href="admin/manager-user">Người dùng</a></li>
-		                	<li><a class="dropdown-item" href="#">Đơn hàng</a></li>
-                		</ul>
-                	</li>
-                </c:if> --%>
+                <c:if test="${sessionScope.loginedUser != null && loginedUser.getRole().getRoleId() != 1}">
+                	<li class="nav-item"><a class="nav-link active" aria-current="page" href="manager-order">Đơn hàng</a></li>
+                </c:if>
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

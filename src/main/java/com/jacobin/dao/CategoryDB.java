@@ -137,8 +137,8 @@ public class CategoryDB {
         String qString = "SELECT c FROM Category c " +
         		"ORDER BY c.categoryId";
         TypedQuery<Category> q = em.createQuery(qString, Category.class);
-        q.setFirstResult((index - 1) * 4); // Sử dụng setFirstResult để đặt OFFSET
-        q.setMaxResults(4); // Sử dụng setMaxResults để giới hạn số lượng hàng trả về
+        q.setFirstResult((index - 1) * 10); // Sử dụng setFirstResult để đặt OFFSET
+        q.setMaxResults(10); // Sử dụng setMaxResults để giới hạn số lượng hàng trả về
         try {
         	List<Category> list = q.getResultList();
             return list;

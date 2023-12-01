@@ -48,6 +48,9 @@
                                                 <div class="py-2 text-uppercase">Đơn Giá</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
+                                                <div class="py-2 text-uppercase">Số tiền</div>
+                                            </th>
+                                            <th scope="col" class="border-0 bg-light">
                                                 <div class="py-2 text-uppercase">Số Lượng</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
@@ -71,8 +74,9 @@
                                                 <td class="align-middle"><img src="${item.product.image}" alt="" width="70" class="img-fluid rounded shadow-sm"></td>
                                                 <td class="align-middle"><strong>${item.product.category.name}</strong></td>
                                                 <td class="align-middle"><strong>${item.product.size}</strong></td>
+                                                <td class="align-middle"><strong>${item.product.price}</strong></td>
                                                 <td class="align-middle"><strong>${item.totalCurrencyFormat}</strong></td>
-                                                <td class="align-middle">
+                                                <td class="align-middle" style="max-width: 120px;">
 	                                                <form action="cart" method="post">
 												      	<input type="hidden" name="action" value="update">
 												        <input type="hidden" name="productId" value="<c:out value='${item.product.productId}'/>">
@@ -123,13 +127,12 @@
 	                        
 	                        <select name="shippingMethod" class="form-select mb-4" required>
 	                            <option value="" selected disabled>Chọn một phương thức vận chuyển</option>
-	                            <option value="">Giao hàng nhanh</option>
+	                            <option value="Giao hàng nhanh">Giao hàng nhanh</option>
 	                        </select>
 	                        
 	                        <select name="paymentMethod" class="form-select mb-4" required>
 	                            <option value="" selected disabled>Chọn một phương thức thanh toán</option>
-	                            <option value="">Thanh toán khi nhận hàng</option>
-	                            <option value="">Thanh toán qua momo</option>
+	                            <option value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>
 	                        </select>
                             <!-- <div class="input-group mb-4 border rounded-pill p-2">
                                 <input type="text" placeholder="Nhập Voucher" aria-describedby="button-addon3" class="form-control border-0">
@@ -147,10 +150,10 @@
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Phí vận chuyển</strong><strong>Miễn phí vận chuyển</strong></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng thanh toán</strong><strong>${cart.totalCurrencyFormat}</strong></li>
                             </ul>
-                            <button class="w-100 btn btn-primary rounded-pill py-2 btn-block" type="submit">Đặt hàng</button>
+                            <button class="w-100 btn btn-primary rounded-pill py-2 btn-block" type="submit" ${cart.count != 0?'':'style="visibility: hidden;"'}>Đặt hàng</button>
                         </div>
                     </div>
-	            	 
+	            	<input type="hidden" name="totalPrice" value="${cart.totalCurrencyFormat}">
                 </form>
             </div>
         </div>

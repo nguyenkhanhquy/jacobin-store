@@ -38,8 +38,8 @@ public class ManagerCategoryController extends HttpServlet {
 		}
 		
 		int count = CategoryDB.getTotalCategory();
-		int endPage = count/4;
-    	if (count % 4 != 0) {
+		int endPage = count/10;
+    	if (count % 10 != 0) {
     		endPage ++;
     	}
     	req.setAttribute("endP", endPage);

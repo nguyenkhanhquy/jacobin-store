@@ -54,7 +54,7 @@ public class OrderTrackDB {
         }       
     }
 
-    public static OrderTrack selectOrderTrackById(OrderTrack orderTrackId) {
+    public static OrderTrack selectOrderTrackById(int orderTrackId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT o FROM OrderTrack o " +
                 "WHERE o.orderTrackId = :orderTrackId";

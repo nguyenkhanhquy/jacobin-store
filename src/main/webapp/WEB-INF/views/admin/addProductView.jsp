@@ -59,7 +59,14 @@
 
                         <div class="form-group mb-4">
                             <label>Size:</label>
-                        	<input name="size" type="text" class="form-control" required>
+	                        <select name="size" class="form-select" required>
+	                            <option value="" selected disabled>Size</option>
+	                            <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                                <option value="XXXL">XXXL</option>
+	                        </select>
                         </div>
                         
                         <div class="form-group mb-4">
@@ -82,7 +89,7 @@
                     	<div class="form-group mb-4">
                             <label>Danh mục:</label>
 	                        <select name="category" class="form-select" required>
-	                            <option value="" selected disabled>Chọn một danh mục</option>
+	                            <option value="" selected disabled>Danh mục</option>
 	                            <c:forEach items="${ListC}" var="c">
 	                                <option value="${c.categoryId}">${c.name}</option>
 	                            </c:forEach>

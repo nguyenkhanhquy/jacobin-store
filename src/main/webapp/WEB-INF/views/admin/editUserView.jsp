@@ -81,11 +81,6 @@
                             <input type="text" class="form-control" id="ma" placeholder="Mã" name="id" value="${user.userId}" readonly> 
                             <label for="ma">Mã<span class="red">*</span></label>
                         </div>
-
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="tenDangNhap" placeholder="Tên đăng nhập" name="userName" value="${user.userName}" readonly> 
-                            <label for="tenDangNhap">Tên đăng nhập<span class="red">*</span></label>
-                        </div>
                         
                         <p><strong>Quyền</strong></p>
                         <select name="role" class="form-select" required>

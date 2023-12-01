@@ -27,23 +27,23 @@ public class ManagerUserController extends HttpServlet {
 		
 		String message = "";
 		
-		String deleteIdString = req.getParameter("deleteId");
-		if (deleteIdString != null) {
-			int deleteId = Integer.parseInt(deleteIdString);
-			User user = UserDB.selectUserById(deleteId);
-			
-			HttpSession session = req.getSession();
-			User userInSession = SessionUtil.getLoginedUser(session);
-			
-			if (user != null && user.getUserName() != userInSession.getUserName()) {
-				if (user.getRole().getRoleId() != 1) {
-					Cart cart = CartDB.selectCartByUser(user);
-					CartDB.delete(cart);
-				}
-				UserDB.delete(user);
-				message = "Xoá thành công người dùng có mã: " + deleteId;
-			}
-		}
+//		String deleteIdString = req.getParameter("deleteId");
+//		if (deleteIdString != null) {
+//			int deleteId = Integer.parseInt(deleteIdString);
+//			User user = UserDB.selectUserById(deleteId);
+//			
+//			HttpSession session = req.getSession();
+//			User userInSession = SessionUtil.getLoginedUser(session);
+//			
+//			if (user != null && user.getUserName() != userInSession.getUserName()) {
+//				if (user.getRole().getRoleId() != 1) {
+//					Cart cart = CartDB.selectCartByUser(user);
+//					CartDB.delete(cart);
+//				}
+//				UserDB.delete(user);
+//				message = "Xoá thành công người dùng có mã: " + deleteId;
+//			}
+//		}
 		
 		int count = UserDB.getTotalUser();
 		int endPage = count/4;

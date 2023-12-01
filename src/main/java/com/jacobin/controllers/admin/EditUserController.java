@@ -50,7 +50,6 @@ public class EditUserController extends HttpServlet {
 		String address = req.getParameter("address");
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
-		String userName = req.getParameter("userName");
 		String roleIdString = req.getParameter("role");
 		int roleId = Integer.parseInt(roleIdString);
 		Role role = RoleDB.selectRoleByID(roleId);
@@ -62,7 +61,7 @@ public class EditUserController extends HttpServlet {
 		} else if (!phone.equals(userS.getPhone()) && UserDB.checkPhoneExists(phone)) {
 			messageError = "Số điện thoại đã tồn tại.<br>" + "Vui lòng điền số điện thoại khác.";
 		} else {
-			message = "Chỉnh sửa thành công người dùng có tên người dùng là: " + userName;
+			message = "Chỉnh sửa thành công người dùng có tên đăng nhập là: " + userS.getUserName();
 			userS.setFirstName(firstName);
 			userS.setLastName(lastName);
 			userS.setDateOfBirth(dateOfBirth);
@@ -81,7 +80,6 @@ public class EditUserController extends HttpServlet {
 		user.setAddress(address);
 		user.setEmail(email);
 		user.setPhone(phone);
-		user.setUserName(userName);
 		user.setRole(role);
 		req.setAttribute("user", user);
 		

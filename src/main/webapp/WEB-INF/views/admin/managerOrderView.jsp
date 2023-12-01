@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Quản lý người dùng</title>
+    <title>Quản lý đơn hàng</title>
     <link rel="icon" href="../resources/img/icon/favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <link href="../resources/css/managerUser.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/css/managerOrder.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -26,12 +26,9 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Quản lý <b>Người Dùng</b></h2>
+                        <h2>Quản lý <b>Đơn Hàng</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="add-user" class="btn btn-outline-success rounded">
-                        	<i class="fa-solid fa-user-plus">&nbsp;</i><strong>Thêm người dùng mới</strong>
-                        </a>
                     	<a href="../home" class="btn btn-outline-primary rounded">
                     		<i class="fa-solid fa-house">&nbsp;</i><strong>Về trang chủ</strong>
                     	</a>
@@ -45,34 +42,34 @@
                         <th>Mã</th>
                         <th>Tên đăng nhập</th>
                         <th>Tên</th>
-                        <th>Họ</th>
-                        <th>Ngày sinh</th>
+                        <th>Ngày đặt hàng</th>
                         <th>Số điện thoại</th>
-                        <th>Email</th>
-                        <th>Quyền</th>
+                        <th>Địa chỉ nhận hàng</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${ListU}" var="u">
+                    <c:forEach items="${ListO}" var="o">
                         <tr>
-                            <td>${u.userId}</td>
-                            <td>${u.userName}</td>
-                            <td>${u.firstName}</td>
-                            <td>${u.lastName}</td>
-                            <td>${u.dateOfBirth}</td>
-                            <td>${u.phone}</td>
-                            <td>${u.email}</td>
-                            <td>${u.getRole().getRoleName()}</td>
+                            <td>${o.orderId}</td>
+                            <td>${o.user.userName}</td>
+                            <td>${o.user.firstName}</td>
+                            <td>${o.orderDateDefaultFormat}</td>
+                            <td>${o.phone}</td>
+                            <td>${o.address}</td>
+                            <td>${o.totalPrice}</td>
+                            <td>${o.orderTrack.status}</td>
                             <td>
-                            	<a href="edit-user?editId=${u.userId}" class="edit">
-                            		<i class="fa-solid fa-user-pen" style="font-size: 18px;" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                            	</a>
-                            	<%-- <c:if test="${u.getUserName() != loginedUser.getUserName()}">
-                            		<a href="manager-user?deleteId=${u.userId}" class="delete">
-	                                	<i class="fa-solid fa-user-xmark" style="font-size: 18px;" data-toggle="tooltip" title="Xoá"></i>
+                            	<a href="manager-order?detailId=${o.orderId}" class="detail">
+                                	<i class="fa-solid fa-circle-info" style="font-size: 18px;" data-toggle="tooltip" title="Chi tiết"></i>
+                                </a>
+                            	<c:if test="${o.orderTrack.orderTrackId == 1}">
+                            		<a href="manager-order?checkId=${o.orderId}" class="check">
+	                                	<i class="fa-solid fa-square-check" style="font-size: 18px;" data-toggle="tooltip" title="Xác nhận"></i>
 	                                </a>
-                            	</c:if> --%>
+                            	</c:if>
                             </td>
                         </tr>
                     </c:forEach>
@@ -83,11 +80,11 @@
             		<div class="hint-text">Mục số <b>${tag}</b> trong tổng số <b>${endP}</b> mục</div>
             	</c:if>       
                 <ul class="pagination">
-                	<li class="page-item" ${tag > 1?'':'style="visibility: hidden;"'}><a href="manager-user?index=${tag-1}">Lùi</a></li>
+                	<li class="page-item" ${tag > 1?'':'style="visibility: hidden;"'}><a href="manager-order?index=${tag-1}">Lùi</a></li>
                     <c:forEach begin="1" end="${endP}" var="i">
-                    	<li class="page-item ${tag == i?'active':''}"><a href="manager-user?index=${i}" class="page-link">${i}</a></li>
+                    	<li class="page-item ${tag == i?'active':''}"><a href="manager-order?index=${i}" class="page-link">${i}</a></li>
                     </c:forEach>
-                    <li class="page-item" ${tag < endP?'':'style="visibility: hidden;"'}><a href="manager-user?index=${tag+1}">Tiến</a></li>
+                    <li class="page-item" ${tag < endP?'':'style="visibility: hidden;"'}><a href="manager-order?index=${tag+1}">Tiến</a></li>
                 </ul>
             </div>
         </div>

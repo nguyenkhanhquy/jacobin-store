@@ -7,6 +7,6 @@
     	<a href="admin/manager-category" class="list-group-item list-group-item-action}">Quản lý danh mục</a>
     	<a href="admin/manager-product" class="list-group-item list-group-item-action}">Quản lý sản phẩm</a>
     	<a href="admin/manager-user" class="list-group-item list-group-item-action}">Quản lý người dùng</a>
-    	<a href="#" class="list-group-item list-group-item-action}">Quản lý đơn hàng</a>
+    	<a href="admin/manager-order" class="list-group-item list-group-item-action}">Quản lý đơn hàng</a>
     </div>
 </div>
