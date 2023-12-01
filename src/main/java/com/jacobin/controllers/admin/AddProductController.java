@@ -54,13 +54,22 @@ public class AddProductController extends HttpServlet {
 		int categoryId = Integer.parseInt(categoryIdString);
 		Category category = CategoryDB.selectCategoryById(categoryId);
 		
+		Product product = new Product();
+		product.setName(name);
+		product.setPrice(Double.parseDouble(price));
+		product.setTitle(title);
+		product.setDescription(description);
+		product.setSize(size);
+		product.setCategory(category);	
+		ProductDB.insert(product);
+		
 		List<Product> listP = ProductDB.selectProductByIdDesc();
 		
 		int idP;
 		
 		if (!listP.isEmpty()) {
 		    Product lastP = listP.get(0);
-		    idP = lastP.getProductId() + 1;
+		    idP = lastP.getProductId();
 		} else {
 			idP = 1;
 		}
@@ -77,16 +86,8 @@ public class AddProductController extends HttpServlet {
 		
 		String urlImage = "https://" + S3Util.AWS_BUCKET + ".s3.amazonaws.com/" + fileName;
 		
-		Product product = new Product();
-		product.setName(name);
-		product.setPrice(Double.parseDouble(price));
-		product.setTitle(title);
-		product.setDescription(description);
-		product.setSize(size);
-		product.setCategory(category);
 		product.setImage(urlImage);
-		
-		ProductDB.insert(product);
+		ProductDB.update(product);
 		
 		String message = "Thêm thành công sản phẩm có mã: " + idP;
 		req.setAttribute("message", message);

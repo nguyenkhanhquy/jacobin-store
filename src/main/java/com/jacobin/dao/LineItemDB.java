@@ -1,11 +1,14 @@
 package com.jacobin.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import com.jacobin.models.LineItem;
+import com.jacobin.models.Product;
 
 public class LineItemDB {
 
@@ -63,6 +66,22 @@ public class LineItemDB {
         try {
         	LineItem lineItem = q.getSingleResult();
             return lineItem;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static List<LineItem> selectLineItemByProduct(Product product) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT l FROM LineItem l " +
+        		"WHERE l.product = :product";
+        TypedQuery<LineItem> l = em.createQuery(qString, LineItem.class);
+        l.setParameter("product", product);
+        try {
+            List<LineItem> list = l.getResultList();
+            return list;
         } catch (NoResultException e) {
             return null;
         } finally {

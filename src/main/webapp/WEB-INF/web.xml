@@ -5,6 +5,7 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>jacobin-store</display-name>
 	
+	<!-- Đặt thời gian timeout cho mỗi phiên làm việc là 30 phút. -->
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>

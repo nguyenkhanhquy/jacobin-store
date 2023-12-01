@@ -1,5 +1,7 @@
 package com.jacobin.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -17,6 +19,20 @@ public class RoleDB {
         try {
         	Role role = q.getSingleResult();
             return role;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+	
+	public static List<Role> selectAllRole() {
+    	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT r FROM Role r";
+        TypedQuery<Role> q = em.createQuery(qString, Role.class);
+        try {
+        	List<Role> list = q.getResultList();
+            return list;
         } catch (NoResultException e) {
             return null;
         } finally {

@@ -2,3 +2,7 @@
 .logo {
     border-radius: 8px;
 }
+
+.carousel-inner {
+	border-radius: 8px;
+}

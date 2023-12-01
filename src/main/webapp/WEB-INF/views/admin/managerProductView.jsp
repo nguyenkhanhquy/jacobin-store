@@ -8,8 +8,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Quản lý sản phẩm</title>
+    <link rel="icon" href="../resources/img/icon/favicon.ico" type="image/x-icon">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -35,10 +36,12 @@
                         <h2>Quản lý <b>Sản Phẩm</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="add-product" class="btn btn-success" data-toggle="modal">
-                        	<i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span>
+                        <a href="add-product" class="btn btn-outline-success rounded">
+                        	<i class="fa-solid fa-circle-plus">&nbsp;</i><strong>Thêm sản phẩm mới</strong>
                         </a>
-                    	<a href="../home"><button type="button" class="btn btn-primary">Về trang chủ</button></a>
+                    	<a href="../home" class="btn btn-outline-primary rounded">
+                    		<i class="fa-solid fa-house">&nbsp;</i><strong>Về trang chủ</strong>
+                    	</a>                        
                     </div>
                 </div>
             </div>
@@ -49,7 +52,7 @@
                         <th>Mã</th>
                         <th>Tên</th>
                         <th>Ảnh</th>
-                        <th>Size</th>
+                        <th>Danh mục</th>
                         <th>Giá</th>
                         <th>Hành động</th>
                     </tr>
@@ -62,13 +65,15 @@
                             <td>
                                 <img src="${p.image}">
                             </td>
-                            <td>${p.size}</td>
-                            <td>${p.price} VNĐ</td>
+                            <td>${p.getCategory().getName()}</td>
+                            <td>${p.priceCurrencyFormat}</td>
                             <td>
-                            	<a href="edit-product?editId=${p.productId}" class="edit" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Chỉnh sửa">&#xE254;</i></a>
-                                <a href="manager-product?deleteId=${p.productId}" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Xoá">&#xE872;</i></a>
+                            	<a href="edit-product?editId=${p.productId}" class="edit">
+                            		<i class="fa-solid fa-pen-to-square" style="font-size: 18px;" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                            	</a>
+                            	<a href="manager-product?deleteId=${p.productId}" class="delete">
+                                	<i class="fa-solid fa-trash" style="font-size: 18px;" data-toggle="tooltip" title="Xoá"></i>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>

@@ -13,8 +13,8 @@ public class CookieUtil {
 	// Lưu thông tin người dùng vào Cookie.
 	public static void storeUserCookie(HttpServletResponse response, User user) {
 		Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, user.getUserName());
-		// 1 ngày (Đã đổi ra giây)
-		cookieUserName.setMaxAge(24 * 60 * 60);
+		// 7 ngày (Đã đổi ra giây)
+		cookieUserName.setMaxAge(7 * 24 * 60 * 60);
 		response.addCookie(cookieUserName);
 	}
 	
@@ -26,6 +26,7 @@ public class CookieUtil {
 		response.addCookie(cookieUserName);
 	}
 
+	// Lấy thông tin người dùng từ Cookie
 	public static String getUserNameInCookie(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {

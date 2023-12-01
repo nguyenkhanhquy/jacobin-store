@@ -9,12 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jacobin.dao.DBUtil;
+import com.jacobin.dao.CartDB;
 import com.jacobin.dao.CategoryDB;
+import com.jacobin.models.Cart;
 import com.jacobin.models.Category;
 import com.jacobin.dao.ProductDB;
 import com.jacobin.models.Product;
+import com.jacobin.utils.SessionUtil;
 
 @WebServlet(urlPatterns = { "/home" })
 public class HomeController extends HttpServlet {
@@ -26,6 +30,12 @@ public class HomeController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		DBUtil.getEmFactory();
+		
+		HttpSession	session = req.getSession();
+		
+		// Lấy thông tin giỏ hàng của người dùng
+		Cart cart = CartDB.selectCartByUser(SessionUtil.getLoginedUser(session));
+		session.setAttribute("cart", cart);
 		
 		String cId = null;
 		req.setAttribute("cId", cId);

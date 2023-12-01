@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jacobin.dao.CartDB;
 import com.jacobin.dao.UserDB;
+import com.jacobin.models.Cart;
 import com.jacobin.models.User;
 import com.jacobin.utils.CookieUtil;
 import com.jacobin.utils.PasswordEncryptorUtil;
@@ -68,6 +70,12 @@ public class LoginController extends HttpServlet {
 			// Nếu người dùng chọn tính năng "Remember me".
 			if (rememberMe) {
 				CookieUtil.storeUserCookie(resp, user);
+			}
+			
+			if (user.getRole().getRoleId() != 1) {
+				// Lấy thông tin giỏ hàng của người dùng
+				Cart cart = CartDB.selectCartByUser(SessionUtil.getLoginedUser(session));
+				session.setAttribute("cart", cart);
 			}
 			
 			url = "/home";

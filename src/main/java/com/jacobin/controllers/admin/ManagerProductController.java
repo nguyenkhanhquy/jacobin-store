@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jacobin.dao.CartDB;
 import com.jacobin.dao.CategoryDB;
+import com.jacobin.dao.LineItemDB;
 import com.jacobin.dao.ProductDB;
+import com.jacobin.models.Cart;
 import com.jacobin.models.Category;
+import com.jacobin.models.LineItem;
 import com.jacobin.models.Product;
 import com.jacobin.utils.S3Util;
 
@@ -31,6 +35,14 @@ public class ManagerProductController extends HttpServlet {
 			int deleteId = Integer.parseInt(deleteIdString);
 			Product product = ProductDB.selectProductById(deleteId);
 			if (product != null) {
+				List<LineItem> items = LineItemDB.selectLineItemByProduct(product);
+				for (LineItem item : items) {
+					Cart cart = CartDB.selectCartByLineItem(item);	
+					cart.removeItem(item);
+					CartDB.update(cart);
+					LineItemDB.delete(item);
+				}
+				
 				String urlImage = product.getImage();
 				int index = urlImage.indexOf(S3Util.AWS_URL_FOLDER);
 				if (index != -1) {

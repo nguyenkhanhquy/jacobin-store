@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -10,6 +9,8 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Jacobin Store</title>
+	<link rel="icon" href="resources/img/icon/favicon.ico" type="image/x-icon">
+	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	
@@ -20,7 +21,6 @@
 	<style>
         #image-preview {
             max-width: 100%;
-            max-height: 100%;
             border: 1px solid #ddd;
         }
     </style>
@@ -31,11 +31,13 @@
 	<jsp:include page="includes/header.jsp" />
 	<!-- End Navbar -->
 
-	<div class="container">
+	<div class="container mt-4">
 		<div class="row">
             <!-- Menu left -->
 			<jsp:include page="includes/left.jsp" />
 			<!-- End Menu left -->
+			
+			<!-- Detail Product -->
 			<div class="col-sm-9">
 				<div class="container">
 					<div class="card">
@@ -44,7 +46,7 @@
 								<article class="gallery-wrap">
 									<div class="img-big-wrap">
 										<div>
-											<a href="#"><img id="image-preview" src="${product.image}"></a>
+											<img id="image-preview" src="${product.image}">
 										</div>
 									</div>
 									<!-- slider-product.// -->
@@ -59,7 +61,7 @@
 
 									<p class="price-detail-wrap">
 										<span class="price h3 text-warning"> 
-										<span class="currency"><fmt:formatNumber type="number" value="${product.price}" pattern="#,##0" /> VNĐ</span>
+										<span class="currency">${product.priceCurrencyFormat}</span>
 										</span>
 									</p>
 									<!-- price-detail-wrap .// -->
@@ -73,29 +75,21 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-5">
-											<dl class="param param-inline">
-												<dt>Số lượng:</dt>
-												<dd>
-													<select class="form-control form-control-sm"
-														style="width: 70px;">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-													</select>
-												</dd>
-											</dl>
-											<!-- item-property .// -->
+											Size: ${product.size}
+										<!-- item-property .// -->
 										</div>
 										<!-- col.// -->
 
 									</div>
 									<!-- row.// -->
 									<hr>
-									<a href="#" class="btn btn-lg btn-primary text-uppercase">
-										Thanh toán </a> <a href="#"
-										class="btn btn-lg btn-outline-primary text-uppercase"> <i
-										class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
-									</a>
+									<form action="cart" method="post" style="display: inline-block;">
+                                		<input type="hidden" name="action" value="add">
+								        <input type="hidden" name="productId" value="${product.productId}">
+								        <button class="btn btn-lg btn-outline-primary text-uppercase" type="submit">
+								        	<i class="fas fa-shopping-cart">&nbsp;</i>Thêm vào giỏ hàng
+								        </button>
+							      	</form>
 								</article>
 								<!-- card-body.// -->
 							</aside>
@@ -106,6 +100,7 @@
 					<!-- card.// -->
 				</div>
 			</div>
+			<!-- End Detail Product -->
 		</div>
 	</div>
 

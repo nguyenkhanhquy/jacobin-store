@@ -34,6 +34,7 @@ public class MailUtilGmail {
 		} else {
 			message.setText(body);
 		}
+		
 		// 3 - address the message
 		Address fromAddress = new InternetAddress(from, "Jacobin Store");
 		Address toAddress = new InternetAddress(to);

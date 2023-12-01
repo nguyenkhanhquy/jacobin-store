@@ -10,6 +10,7 @@ public class PasswordEncryptorUtil {
 		String salt = "asjrlkmcoewj@tjle;oxqskjhdjksjf1jurVn";
 		String result = null;
 		
+		// Mã hóa SHA-1
 		str = str + salt;
 		try {
 			byte[] dataBytes = str.getBytes("UTF-8");

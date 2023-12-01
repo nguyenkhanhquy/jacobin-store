@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Đăng ký tài khoản</title>
+    <link rel="icon" href="resources/img/icon/favicon.ico" type="image/x-icon">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -18,7 +20,7 @@
     <main class="form-register w-100 m-auto">
         <form class="text-center" action="register" method="post">
 
-            <a href="home"><img class="logo mb-4" src="resources/img/logo/logo.jpg" alt="logo" width="150"></a>
+            <a href="home"><img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="280"></a>
             
             <h1 class="h3 mb-3 fw-normal">ĐĂNG KÝ TÀI KHOẢN</h1>
 
@@ -50,7 +52,7 @@
                         </div>
 
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="diaChiEmail" placeholder="Email" name="email" value="${user.email}" required> 
+                            <input type="email" class="form-control" id="diaChiEmail" placeholder="Email" name="email" value="${user.email}" required> 
                             <label for="diaChiEmail">Email<span class="red">*</span></label>
                         </div>
 
@@ -83,11 +85,6 @@
                         <div class="mb-3">
                             <label for="dongYDieuKhoan" class="form-label"> Đồng ý <a>điều khoản người dùng</a><span class="red">*</span></label> 
                             <input type="checkbox" class="form-check-input" id="dongYDieuKhoan" name="dongYDieuKhoan" required="required" onchange="xuLyChonDongY()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="dongYNhanMail" class="form-label">Đồng ý nhận email về sản phẩm</label> 
-                            <input type="checkbox" class="form-check-input" id="dongYNhanMail" name="dongYNhanMail">
                         </div>
 
                         <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" id="submit" style="visibility: hidden;">Đăng ký</button>

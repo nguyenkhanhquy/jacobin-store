@@ -29,15 +29,11 @@ public class RoleFilter implements Filter {
 
 		// Lấy đối tượng HttpSession từ request
 		HttpSession session = req.getSession();
-
 		User userInSession = SessionUtil.getLoginedUser(session);
 
-		if (userInSession != null) {
-			if (userInSession.getRole().getRoleId() != 1) {
-				resp.sendRedirect(req.getContextPath() + "/home");
-			} else {
-				chain.doFilter(request, response);
-			}
+		// Kiểm tra nếu là admin thì cho qua, nếu không thì chuyển hướng sang home
+		if (userInSession != null && userInSession.getRole().getRoleId() == 1) {
+			chain.doFilter(request, response);
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/home");
 		}

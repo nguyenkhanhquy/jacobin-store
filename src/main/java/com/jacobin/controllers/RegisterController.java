@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jacobin.dao.CartDB;
 import com.jacobin.dao.RoleDB;
 import com.jacobin.dao.UserDB;
+import com.jacobin.models.Cart;
 import com.jacobin.models.Role;
 import com.jacobin.models.User;
 import com.jacobin.utils.PasswordEncryptorUtil;
@@ -64,11 +66,11 @@ public class RegisterController extends HttpServlet {
 		user.setRole(role);
 		
 		String message;
-		if (UserDB.checkExists(user.getEmail())) {
+		if (UserDB.checkEmailExists(user.getEmail())) {
 			message = "Địa chỉ Email đã tồn tại.<br>" + "Vui lòng điền một địa chỉ Email khác.";
-		} else if (UserDB.checkExists(user.getPhone())) {
+		} else if (UserDB.checkPhoneExists(user.getPhone())) {
 			message = "Số điện thoại đã tồn tại.<br>" + "Vui lòng điền số điện thoại khác.";
-		} else if (UserDB.checkExists(user.getUserName())) {
+		} else if (UserDB.checkUserNameExists(user.getUserName())) {
 			message = "Tên đăng nhập đã tồn tại.<br>" + "Vui lòng điền tên đăng nhập khác.";
 		} else if (!user.getPassword().equals(passwordAgain)) {
 			message = "Mật khẩu không khớp.<br>" + "Vui lòng nhập lại.";
@@ -78,6 +80,10 @@ public class RegisterController extends HttpServlet {
 			password = PasswordEncryptorUtil.toSHA1(password);
 			user.setPassword(password);
 			UserDB.insert(user);
+			
+			Cart cart = new Cart();
+			cart.setUser(user);
+			CartDB.insert(cart);
 			
 			// Gửi email đến email của user
 			String to = email;

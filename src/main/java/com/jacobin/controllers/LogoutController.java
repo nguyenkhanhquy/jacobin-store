@@ -36,6 +36,7 @@ public class LogoutController extends HttpServlet {
 		// Xoá Session
 		HttpSession session = req.getSession();
 		session.removeAttribute("loginedUser");
+		session.removeAttribute("cart");
 	
 		req.setAttribute("message", message);
 		req.getRequestDispatcher(url).forward(req, resp);
