@@ -82,7 +82,7 @@
 	                                <a href="detail?pId=${p.productId}"><img class="card-img-top" src="${p.image}" alt=""></a>
 	                                <div class="card-body">
 	                                    <h4 class="card-title">
-	                                        <a href="detail?pId=${p.productId}">${p.name}</a>
+	                                        <a href="detail?pId=${p.productId}">${p.name}</a> - ${p.size}
 	                                    </h4>
 	                                    <h5>${p.priceCurrencyFormat}</h5>
 	                                    <p class="card-text">${p.title}</p>

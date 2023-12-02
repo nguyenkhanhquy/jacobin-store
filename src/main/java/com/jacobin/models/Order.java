@@ -1,14 +1,13 @@
 package com.jacobin.models;
 
-import static javax.persistence.FetchType.EAGER;
-
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,17 +20,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.AllArgsConstructor;
+import com.jacobin.dao.DetailOrderDB;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "customer_order")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -65,15 +62,38 @@ public class Order implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(fetch=EAGER, cascade=CascadeType.PERSIST)
+	@OneToMany
 	private List<DetailOrder> details;
 	
-	@Column(name = "payment_method")
-	private String paymentMethod;
+	public Order() {
+		details = new ArrayList<DetailOrder>();
+    }
+	
 	
 	@Column(name = "shipping_method")
 	private String shippingMethod;
 	
+	@Column(name = "payment_method")
+	private String paymentMethod;
+	
 	@Column(name = "total_price")
 	private String totalPrice;
+	
+    public double getTotal() {
+        double total = 0.0;
+        for (DetailOrder item : details) {
+        	total += item.getTotal();
+        }
+        return total;
+    }
+    
+    public String getTotalCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return currency.format(this.getTotal());
+    }
+    
+    public void addItem(DetailOrder item) {
+    	details.add(item);
+    	DetailOrderDB.insert(item);
+    }
 }

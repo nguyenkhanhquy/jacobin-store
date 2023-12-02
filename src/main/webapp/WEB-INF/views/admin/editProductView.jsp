@@ -65,12 +65,7 @@
                         <div class="form-group mb-4">
                             <label>Size:</label>
 	                        <select name="size" class="form-select" required>
-	                            <option value="" selected disabled>Size</option>
-	                            <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
+	                            <option value="${product.size}">${product.size}</option>
 	                        </select>
                         </div>
                         

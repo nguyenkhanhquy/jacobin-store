@@ -33,28 +33,28 @@
                                     <thead>
                                         <tr>
                                         	<th scope="col" class="border-0 bg-light">
-                                                <div class="p-2 px-3 text-uppercase">Tên</div>
+                                                <div class="p-2 px-3">Tên</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="p-2 px-3 text-uppercase">Ảnh</div>
+                                                <div class="p-2 px-3">Ảnh</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="py-2 text-uppercase">Danh Mục</div>
+                                                <div class="py-2">Danh Mục</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="py-2 text-uppercase">Size</div>
+                                                <div class="py-2">Size</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="py-2 text-uppercase">Đơn Giá</div>
+                                                <div class="py-2">Đơn Giá</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="py-2 text-uppercase">Số tiền</div>
+                                                <div class="py-2">Số tiền</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="py-2 text-uppercase">Số Lượng</div>
+                                                <div class="py-2">Số Lượng</div>
                                             </th>
                                             <th scope="col" class="border-0 bg-light">
-                                                <div class="py-2 text-uppercase"></div>
+                                                <div class="py-2"></div>
                                             </th>
                                         </tr>
                                     </thead>
@@ -72,9 +72,9 @@
                                                 	<strong><a href="detail?pId=${item.product.productId}" class="text-dark d-inline-block">${item.product.name}</a></strong>
                                                 </td>
                                                 <td class="align-middle"><img src="${item.product.image}" alt="" width="70" class="img-fluid rounded shadow-sm"></td>
-                                                <td class="align-middle"><strong>${item.product.category.name}</strong></td>
-                                                <td class="align-middle"><strong>${item.product.size}</strong></td>
-                                                <td class="align-middle"><strong>${item.product.price}</strong></td>
+                                                <td class="align-middle">${item.product.category.name}</td>
+                                                <td class="align-middle">${item.product.size}</td>
+                                                <td class="align-middle">${item.product.price}</td>
                                                 <td class="align-middle"><strong>${item.totalCurrencyFormat}</strong></td>
                                                 <td class="align-middle" style="max-width: 120px;">
 	                                                <form action="cart" method="post">
@@ -111,8 +111,13 @@
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thông tin đặt hàng</div>
                         <div class="p-4">
                         	<div class="form-floating mb-4">
-	                            <input type="text" class="form-control" id="ten" placeholder="Tên" name="firstName" value="${loginedUser.firstName}" required> 
+	                            <input type="text" class="form-control" id="ten" placeholder="Tên" name="firstName" value="${loginedUser.firstName}" required readonly> 
 	                            <label for="ten">Tên<span class="red">*</span></label>
+	                        </div>
+	                        	                        
+	                        <div class="form-floating mb-4">
+	                            <input type="tel" class="form-control" id="dienThoai" placeholder="Số điện thoại" name="phone" value="${loginedUser.phone}" required readonly> 
+	                            <label for="dienThoai">Số điện thoại<span class="red">*</span></label>
 	                        </div>
 	                        
 	                        <div class="form-floating mb-4">
@@ -120,17 +125,12 @@
 	                            <label for="diaChiKhachHang">Địa chỉ<span class="red">*</span></label>
 	                        </div>
 	                        
-	                        <div class="form-floating mb-4">
-	                            <input type="tel" class="form-control" id="dienThoai" placeholder="Số điện thoại" name="phone" value="${loginedUser.phone}" required> 
-	                            <label for="dienThoai">Số điện thoại<span class="red">*</span></label>
-	                        </div>
-	                        
-	                        <select name="shippingMethod" class="form-select mb-4" required>
+	                        <select name="paymentMethod" class="form-select mb-4" required>
 	                            <option value="" selected disabled>Chọn một phương thức vận chuyển</option>
 	                            <option value="Giao hàng nhanh">Giao hàng nhanh</option>
 	                        </select>
 	                        
-	                        <select name="paymentMethod" class="form-select mb-4" required>
+	                        <select name="shippingMethod" class="form-select mb-4" required>
 	                            <option value="" selected disabled>Chọn một phương thức thanh toán</option>
 	                            <option value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>
 	                        </select>

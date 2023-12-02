@@ -8,13 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.jacobin.dao.CartDB;
 import com.jacobin.dao.UserDB;
-import com.jacobin.models.Cart;
 import com.jacobin.models.User;
-import com.jacobin.utils.SessionUtil;
 
 @WebServlet(urlPatterns = {"/admin/manager-user"})
 public class ManagerUserController extends HttpServlet {
@@ -24,26 +20,6 @@ public class ManagerUserController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		
-		String message = "";
-		
-//		String deleteIdString = req.getParameter("deleteId");
-//		if (deleteIdString != null) {
-//			int deleteId = Integer.parseInt(deleteIdString);
-//			User user = UserDB.selectUserById(deleteId);
-//			
-//			HttpSession session = req.getSession();
-//			User userInSession = SessionUtil.getLoginedUser(session);
-//			
-//			if (user != null && user.getUserName() != userInSession.getUserName()) {
-//				if (user.getRole().getRoleId() != 1) {
-//					Cart cart = CartDB.selectCartByUser(user);
-//					CartDB.delete(cart);
-//				}
-//				UserDB.delete(user);
-//				message = "Xoá thành công người dùng có mã: " + deleteId;
-//			}
-//		}
 		
 		int count = UserDB.getTotalUser();
 		int endPage = count/4;
@@ -71,8 +47,6 @@ public class ManagerUserController extends HttpServlet {
 			List<User> listU = UserDB.pagingUser(index);
 			req.setAttribute("ListU", listU);
 		}
-    	
-		req.setAttribute("message", message);
 		
     	req.getRequestDispatcher("/WEB-INF/views/admin/managerUserView.jsp").forward(req, resp);
 	}
