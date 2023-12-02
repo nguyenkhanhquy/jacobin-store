@@ -40,12 +40,13 @@
                 <thead>
                     <tr>
                         <th>Mã</th>
-                        <th>Tên đăng nhập</th>
                         <th>Tên</th>
                         <th>Ngày đặt hàng</th>
                         <th>Số điện thoại</th>
                         <th>Địa chỉ nhận hàng</th>
                         <th>Tổng tiền</th>
+                        <th>Thanh toán</th>
+                        <th>Vận chuyển</th>
                         <th>Trạng thái</th>
                         <th>Hành động</th>
                     </tr>
@@ -54,12 +55,13 @@
                     <c:forEach items="${ListO}" var="o">
                         <tr>
                             <td>${o.orderId}</td>
-                            <td>${o.user.userName}</td>
                             <td>${o.user.firstName}</td>
                             <td>${o.orderDateDefaultFormat}</td>
                             <td>${o.phone}</td>
                             <td>${o.address}</td>
                             <td>${o.totalPrice}</td>
+                            <td>${o.paymentMethod}</td>
+                            <td>${o.shippingMethod}</td>
                             <td>${o.orderTrack.status}</td>
                             <td>
                             	<a href="manager-order?detailId=${o.orderId}" class="detail">

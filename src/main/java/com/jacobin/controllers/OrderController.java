@@ -17,6 +17,7 @@ import com.jacobin.dao.LineItemDB;
 import com.jacobin.dao.OrderDB;
 import com.jacobin.dao.OrderTrackDB;
 import com.jacobin.models.Cart;
+import com.jacobin.models.DetailOrder;
 import com.jacobin.models.LineItem;
 import com.jacobin.models.Order;
 import com.jacobin.models.OrderTrack;
@@ -56,8 +57,6 @@ public class OrderController extends HttpServlet {
 		order.setTotalPrice(totalPrice);
 		order.setOrderTrack(orderTrack);
 		
-		OrderDB.insert(order);
-		
 		Cart cart = CartDB.selectCartByUser(SessionUtil.getLoginedUser(session));
 		List<LineItem> items = cart.getItems();
 		// Tạo một danh sách tạm thời để lưu trữ các item cần xóa
@@ -68,10 +67,18 @@ public class OrderController extends HttpServlet {
 		}
 
 		for (LineItem item : itemsToDelete) {
+			DetailOrder detailOrder = new DetailOrder();
+			detailOrder.setNameProduct(item.getProduct().getName());
+			detailOrder.setSize(item.getProduct().getSize());
+			detailOrder.setQuantity(item.getQuantity());
+			detailOrder.setPrice(item.getProduct().getPrice());
+			order.addItem(detailOrder);
+			
 		    cart.removeItem(item);
 		    CartDB.update(cart); 
 		    LineItemDB.delete(item);
 		}
+		OrderDB.insert(order);
 		session.setAttribute("cart", cart);
 		
 		String url = "/WEB-INF/views/customer/successView.jsp";

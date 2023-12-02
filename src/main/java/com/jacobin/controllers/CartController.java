@@ -82,8 +82,6 @@ public class CartController extends HttpServlet {
 			session.setAttribute("cart", cart);
 			resp.sendRedirect("cart");
 			return;
-		} else if (action.equals("checkout")) {
-			url = "/WEB-INF/views/checkoutView.jsp";
 		} else if (action.equals("home")) {
 			resp.sendRedirect("home");
 			return;
