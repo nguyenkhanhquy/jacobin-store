@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <link href="resources/css/managerOrder.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/css/managerOrder.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-sm-6">
                     	<a href="manager-order" class="btn btn-outline-primary rounded">
-                    		<i class="fa-solid fa-gear">&nbsp;</i><strong>Về trang đơn hàng</strong>
+                    		<i class="fa-solid fa-gear">&nbsp;</i><strong>Về trang quản lý đơn hàng</strong>
                     	</a>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
             <p>Phương thức vận chuyển: ${order.shippingMethod}</p>
             <p>Phương thức thanh toán: ${order.paymentMethod}</p>
             <p>Ngày đặt hàng: ${order.orderDateDefaultFormat}</p>
-            <p>Tổng thanh toán: ${order.totalCurrencyFormat}</p>
+			<p>Tổng thanh toán: ${order.totalCurrencyFormat}</p>
         </div>
     </div>
     

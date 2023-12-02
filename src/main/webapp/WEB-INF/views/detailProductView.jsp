@@ -66,7 +66,12 @@
 									</p>
 									<!-- price-detail-wrap .// -->
 									<dl class="item-property">
-										<dt>Mô tả</dt>
+										<dt>Tiêu đề:</dt>
+										<dd>
+											<p>${product.title}</p>
+										</dd>
+										
+										<dt>Mô tả:</dt>
 										<dd>
 											<p>${product.description}</p>
 										</dd>

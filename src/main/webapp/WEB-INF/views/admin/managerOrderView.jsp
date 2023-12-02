@@ -64,7 +64,7 @@
                             <td>${o.shippingMethod}</td>
                             <td>${o.orderTrack.status}</td>
                             <td>
-                            	<a href="manager-order?detailId=${o.orderId}" class="detail">
+                            	<a href="detail-order?detailId=${o.orderId}" class="detail">
                                 	<i class="fa-solid fa-circle-info" style="font-size: 18px;" data-toggle="tooltip" title="Chi tiết"></i>
                                 </a>
                             	<c:if test="${o.orderTrack.orderTrackId == 1}">
