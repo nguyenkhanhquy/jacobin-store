@@ -4,7 +4,22 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
 	<display-name>jacobin-store</display-name>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error_404.jsp</location>
+	</error-page>
 	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error_500.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/WEB-INF/views/error_java.jsp</location>
+	</error-page>
+
 	<!-- Đặt thời gian timeout cho mỗi phiên làm việc là 30 phút. -->
 	<session-config>
 		<session-timeout>30</session-timeout>

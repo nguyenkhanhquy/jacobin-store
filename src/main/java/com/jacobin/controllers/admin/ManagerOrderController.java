@@ -1,8 +1,10 @@
 package com.jacobin.controllers.admin;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,7 @@ import com.jacobin.dao.OrderDB;
 import com.jacobin.dao.OrderTrackDB;
 import com.jacobin.models.Order;
 import com.jacobin.models.OrderTrack;
+import com.jacobin.utils.MailUtilGmail;
 
 @WebServlet(urlPatterns = {"/admin/manager-order"})
 public class ManagerOrderController extends HttpServlet {
@@ -32,6 +35,27 @@ public class ManagerOrderController extends HttpServlet {
 			OrderTrack orderTrack = OrderTrackDB.selectOrderTrackById(2);
 			order.setOrderTrack(orderTrack);
 			OrderDB.update(order);
+			
+			// Gửi email đến email của user
+			String to = order.getUser().getEmail();
+			String from = "shop.javamail@gmail.com";
+			String subject = "Xác nhận đơn hàng";
+			String body = "Chào " + order.getUser().getFirstName() + ",\n\n"
+					+ "Chúng tôi báo rằng đơn hàng có mã đơn hàng: " + order.getOrderId() + " của bạn đã được xác nhận!\n\n"
+					+ "Đơn hàng sẽ sớm được gửi đến địa chỉ của bạn.\n\n"
+					+ "Chúc bạn có những trải nghiệm mua sắm thú vị và hài lòng!\n\n" 
+					+ "Trân trọng, Jacobin Store.";
+			boolean isBodyHTML = false;
+			
+			try {
+				MailUtilGmail.sendMail(to, from, subject, body, isBodyHTML);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			message = "Xác nhận thành công đơn hàng có mã: " + checkId;
 		}
