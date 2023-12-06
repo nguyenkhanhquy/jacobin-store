@@ -68,7 +68,7 @@
                                 	<i class="fa-solid fa-circle-info" style="font-size: 18px;" data-toggle="tooltip" title="Chi tiết"></i>
                                 </a>
                             	<c:if test="${o.orderTrack.orderTrackId == 1}">
-                            		<a href="manager-order?checkId=${o.orderId}" class="check">
+                            		<a href="#" class="check" onclick="confirmCheckOrder(${o.orderId})">
 	                                	<i class="fa-solid fa-square-check" style="font-size: 18px;" data-toggle="tooltip" title="Xác nhận"></i>
 	                                </a>
                             	</c:if>
@@ -91,6 +91,15 @@
             </div>
         </div>
     </div>
+    
+    <script>
+	    function confirmCheckOrder(orderId) {
+	        var isConfirmed = confirm("Bạn có chắc chắn muốn xác nhận đơn hàng có mã: " + orderId + " không?");
+	        if (isConfirmed) {
+	            window.location.href = "manager-order?checkId=" + orderId;
+	        }
+	    }
+	</script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

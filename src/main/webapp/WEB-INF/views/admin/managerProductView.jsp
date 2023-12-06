@@ -71,7 +71,7 @@
                             	<a href="edit-product?editId=${p.productId}" class="edit">
                             		<i class="fa-solid fa-pen-to-square" style="font-size: 18px;" data-toggle="tooltip" title="Chỉnh sửa"></i>
                             	</a>
-                            	<a href="manager-product?deleteId=${p.productId}" class="delete">
+                            	<a href="#" class="delete" onclick="confirmDelete(${p.productId})">
                                 	<i class="fa-solid fa-trash" style="font-size: 18px;" data-toggle="tooltip" title="Xoá"></i>
                                 </a>
                             </td>
@@ -93,6 +93,15 @@
             </div>
         </div>
     </div>
+    
+    <script>
+	    function confirmDelete(productId) {
+	        var isConfirmed = confirm("Bạn có chắc chắn muốn xoá sản phẩm có mã: " + productId + " không?");
+	        if (isConfirmed) {
+	            window.location.href = "manager-product?deleteId=" + productId;
+	        }
+	    }
+	</script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
