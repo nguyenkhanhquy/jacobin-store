@@ -16,9 +16,9 @@
 		<p>Sorry, Java has thrown an exception.</p>
 		<p>To continue, click the Back button in your browser.</p>
 	
-		<h2>Details</h2>
+		<%-- <h2>Details</h2>
 		<p>Type: ${pageContext.exception["class"]}</p>
-		<p>Message: ${pageContext.exception.message}</p>
+		<p>Message: ${pageContext.exception.message}</p> --%>
 		<br>
 	    <a href="/home"><i class="fa-solid fa-arrow-left"></i>&nbsp;HOME PAGE</a>
 	</div>

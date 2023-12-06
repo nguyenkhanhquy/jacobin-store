@@ -112,17 +112,17 @@
                         <div class="p-4">
                         	<div class="form-floating mb-4">
 	                            <input type="text" class="form-control" id="ten" placeholder="Tên" name="firstName" value="${loginedUser.firstName}" required readonly> 
-	                            <label for="ten">Tên<span class="red">*</span></label>
+	                            <label for="ten">Tên <span class="red">*</span></label>
 	                        </div>
 	                        	                        
 	                        <div class="form-floating mb-4">
 	                            <input type="tel" class="form-control" id="dienThoai" placeholder="Số điện thoại" name="phone" value="${loginedUser.phone}" required readonly> 
-	                            <label for="dienThoai">Số điện thoại<span class="red">*</span></label>
+	                            <label for="dienThoai">Số điện thoại <span class="red">*</span></label>
 	                        </div>
 	                        
 	                        <div class="form-floating mb-4">
 	                            <input type="text" class="form-control" id="diaChiKhachHang" placeholder="Địa chỉ" name="address" value="${loginedUser.address}" required> 
-	                            <label for="diaChiKhachHang">Địa chỉ<span class="red">*</span></label>
+	                            <label for="diaChiKhachHang">Địa chỉ <span class="red">*</span></label>
 	                        </div>
 	                        
 	                        <select name="paymentMethod" class="form-select mb-4" required>
