@@ -55,7 +55,7 @@
                             	<a href="edit-category?editId=${c.categoryId}" class="edit">
                             		<i class="fa-solid fa-pen-to-square" style="font-size: 18px;" data-toggle="tooltip" title="Chỉnh sửa"></i>
                             	</a>
-                            	<a href="manager-category?deleteId=${c.categoryId}" class="delete">
+                            	<a href="#" class="delete" onclick="confirmDeleteCategory(${c.categoryId})">
                                 	<i class="fa-solid fa-trash" style="font-size: 18px;" data-toggle="tooltip" title="Xoá"></i>
                                 </a>
                             </td>
@@ -77,6 +77,15 @@
             </div>
         </div>
     </div>
+    
+    <script>
+	    function confirmDeleteCategory(categoryId) {
+	        var isConfirmed = confirm("Bạn có chắc chắn muốn xoá danh mục có mã: " + categoryId + " không?");
+	        if (isConfirmed) {
+	            window.location.href = "manager-category?deleteId=" + categoryId;
+	        }
+	    }
+	</script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

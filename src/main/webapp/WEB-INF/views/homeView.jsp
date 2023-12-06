@@ -129,7 +129,7 @@
     <script>
     	function loadMore(categoryId) {
     		var amount = document.getElementsByClassName("product").length;
-    		var url = '/jacobin-store/load';
+    		var url = '/load';
     	    if (categoryId !== undefined) {
     	        url += '?cId=' + categoryId;
     	    }

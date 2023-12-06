@@ -80,7 +80,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-5">
-											Size: ${product.size}
+											<strong>Size: ${product.size}</strong>
 										<!-- item-property .// -->
 										</div>
 										<!-- col.// -->

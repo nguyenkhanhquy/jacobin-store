@@ -43,7 +43,7 @@ public class LoadMoreController extends HttpServlet{
     				+ "	                                <a href=\"detail?pId=${p.productId}\"><img class=\"card-img-top\" src=\""+p.getImage()+"\" alt=\"\"></a>\r\n"
     				+ "	                                <div class=\"card-body\">\r\n"
     				+ "	                                    <h4 class=\"card-title\">\r\n"
-    				+ "	                                        <a href=\"detail?pId="+p.getProductId()+"\">"+p.getName()+"</a> - "+p.getPrice()+"\r\n"
+    				+ "	                                        <a href=\"detail?pId="+p.getProductId()+"\">"+p.getName()+"</a> - "+p.getSize()+"\r\n"
     				+ "	                                    </h4>\r\n"
     				+ "	                                    <h5>"+p.getPriceCurrencyFormat()+"</h5>\r\n"
     				+ "	                                    <p class=\"card-text\">"+p.getTitle()+"</p>\r\n"
