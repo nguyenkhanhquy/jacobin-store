@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Đăng nhập</title>
+    <title>Xác minh email</title>
     <link rel="icon" href="resources/img/icon/favicon.ico" type="image/x-icon">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -17,33 +17,25 @@
 
 <body>
 	<main class="form-signin w-100 m-auto">
-		<form class="text-center" action="login" method="post">
-
+		<form class="text-center" action="verify-otp" method="post">
+			<input type="hidden" name="action" value="confirm">
 			<a href="home"><img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="280"></a>
 
-			<h1 class="h3 mb-3 fw-normal">ĐĂNG NHẬP</h1>
+			<h1 class="h3 mb-3 fw-normal">XÁC MINH EMAIL</h1>
 
 			<div class="text-center"><p class="red"><i>${message}</i></p></div>
 
-			<div class="form-floating">
-				<input type="text" class="form-control" id="tenDangNhap"
-					placeholder="Tên đăng nhập" name="userName" required> <label for="tenDangNhap">Tên đăng nhập</label>
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="otp"
+					placeholder="OTP" name="otp" required> <label for="otp">Mã OTP <span class="red">*</span></label>
 			</div>
 
-			<div class="form-floating">
-				<input type="password" class="form-control" id="matKhau"
-					placeholder="Mật khẩu" name="password" required> <label for="matKhau">Mật khẩu</label>
-			</div>
-
-			<div class="checkbox mb-3">
-				<label><input type="checkbox" name="rememberMe" value="Y"> Ghi nhớ tài khoản này</label>
-			</div>
-
-			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Đăng nhập</button>
-			
-			<a href="forgot-password">Quên mật khẩu</a>
-			<hr>
-			<a href="register">Đăng ký tài khoản mới</a>
+			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Xác nhận</button>
+		</form>
+		
+		<form class="text-center" action="verify-otp" method="post">
+			<input type="hidden" name="action" value="send">
+			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Gữi mã</button>
 			<p class="mt-5 mb-3 text-muted">&copy; 2023 Jacobin.com</p>
 		</form>
 	</main>

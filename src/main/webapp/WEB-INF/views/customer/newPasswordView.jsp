@@ -17,33 +17,26 @@
 
 <body>
 	<main class="form-signin w-100 m-auto">
-		<form class="text-center" action="login" method="post">
-
+		<form class="text-center" action="forgot-password" method="post">
+			<input type="hidden" name="action" value="newpass">
+			<input type="hidden" name="email" value="${email}">
 			<a href="home"><img class="logo" src="resources/img/logo/logo(black).png" alt="logo" width="280"></a>
 
-			<h1 class="h3 mb-3 fw-normal">ĐĂNG NHẬP</h1>
+			<h1 class="h3 mb-3 fw-normal">TẠO MẬT KHẨU MỚI</h1>
 
 			<div class="text-center"><p class="red"><i>${message}</i></p></div>
 
 			<div class="form-floating">
-				<input type="text" class="form-control" id="tenDangNhap"
-					placeholder="Tên đăng nhập" name="userName" required> <label for="tenDangNhap">Tên đăng nhập</label>
-			</div>
-
-			<div class="form-floating">
 				<input type="password" class="form-control" id="matKhau"
-					placeholder="Mật khẩu" name="password" required> <label for="matKhau">Mật khẩu</label>
+					placeholder="Mật khẩu mới" name="newPassword" required> <label for="matKhau">Mật khẩu mới<span class="red">*</span></label>
 			</div>
-
-			<div class="checkbox mb-3">
-				<label><input type="checkbox" name="rememberMe" value="Y"> Ghi nhớ tài khoản này</label>
-			</div>
-
-			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Đăng nhập</button>
 			
-			<a href="forgot-password">Quên mật khẩu</a>
-			<hr>
-			<a href="register">Đăng ký tài khoản mới</a>
+			<div class="form-floating mb-4">
+                 <input type="password" class="form-control" id="matKhauNhapLai" 
+                 placeholder="Nhập lại mật khẩu mới" name="newPasswordAgain" required> <label for="matKhauNhapLai">Nhập lại mật khẩu mới<span class="red">*</span></label>
+             </div>
+             
+			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Xác nhận</button>
 			<p class="mt-5 mb-3 text-muted">&copy; 2023 Jacobin.com</p>
 		</form>
 	</main>
