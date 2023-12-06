@@ -1,0 +1,21 @@
+@charset "UTF-8";
+html,
+body {
+  height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.logo {
+    border-radius: 8px;
+}
+
+.form-success {
+    max-width: 350px;
+}

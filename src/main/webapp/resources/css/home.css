@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.logo {
+    border-radius: 8px;
+}
+
+.carousel-inner {
+	border-radius: 8px;
+}
