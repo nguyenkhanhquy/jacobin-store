@@ -39,20 +39,25 @@ public class LoadMoreController extends HttpServlet{
     
     	for (Product p : listP ) {
     		out.println("<div class=\"product col-lg-4 col-md-6 mb-4\">\r\n"
-    				+ "                            <div class=\"card h-100\">\r\n"
-    				+ "                                <a href=\"#\"><img class=\"card-img-top\" src=\""+p.getImage()+"\" alt=\"\"></a>\r\n"
-    				+ "                                <div class=\"card-body\">\r\n"
-    				+ "                                    <h4 class=\"card-title\">\r\n"
-    				+ "                                        <a href=\"detail?pId="+p.getProductId()+"\">"+p.getName()+"</a>\r\n"
-    				+ "                                    </h4>\r\n"
-    				+ "                                    <h5><fmt:formatNumber type=\"number\" value=\""+p.getPrice()+"\" pattern=\"#,##0\" /> VNĐ</h5>\r\n"
-    				+ "                                    <p class=\"card-text\">"+p.getTitle()+"</p>\r\n"
-    				+ "                                </div>\r\n"
-    				+ "                                <div class=\"card-footer\">\r\n"
-    				+ "                                    <small class=\"text-muted\">&#9733; &#9733; &#9733; &#9733; &#9734;</small>\r\n"
-    				+ "                                </div>\r\n"
-    				+ "                            </div>\r\n"
-    				+ "                        </div>");
+    				+ "	                            <div class=\"card h-100\">\r\n"
+    				+ "	                                <a href=\"detail?pId=${p.productId}\"><img class=\"card-img-top\" src=\""+p.getImage()+"\" alt=\"\"></a>\r\n"
+    				+ "	                                <div class=\"card-body\">\r\n"
+    				+ "	                                    <h4 class=\"card-title\">\r\n"
+    				+ "	                                        <a href=\"detail?pId="+p.getProductId()+"\">"+p.getName()+"</a> - "+p.getPrice()+"\r\n"
+    				+ "	                                    </h4>\r\n"
+    				+ "	                                    <h5>"+p.getPriceCurrencyFormat()+"</h5>\r\n"
+    				+ "	                                    <p class=\"card-text\">"+p.getTitle()+"</p>\r\n"
+    				+ "	                                </div>\r\n"
+    				+ "	                                <div class=\"card-footer\">\r\n"
+    				+ "	                                	<a href=\"detail?pId="+p.getProductId()+"\" class=\"btn btn-outline-dark\">Chi tiết</a>\r\n"
+    				+ "	                                	<form action=\"cart\" method=\"post\" style=\"display: inline-block;\">\r\n"
+    				+ "	                                		<input type=\"hidden\" name=\"action\" value=\"add\">\r\n"
+    				+ "									        <input type=\"hidden\" name=\"productId\" value=\""+p.getProductId()+"\">\r\n"
+    				+ "									        <button class=\"btn btn-outline-primary\" type=\"submit\"><i class=\"fas fa-shopping-cart\">&nbsp;</i>Thêm vào giỏ hàng</button>\r\n"
+    				+ "								      	</form>\r\n"
+    				+ "	                                </div>\r\n"
+    				+ "	                            </div>\r\n"
+    				+ "	                        </div>");
     	}
 	}
 	
