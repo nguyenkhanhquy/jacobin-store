@@ -35,7 +35,7 @@
 		
 		<form class="text-center" action="verify-otp" method="post">
 			<input type="hidden" name="action" value="send">
-			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Gữi mã</button>
+			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Gửi mã</button>
 			<p class="mt-5 mb-3 text-muted">&copy; 2023 Jacobin.com</p>
 		</form>
 	</main>

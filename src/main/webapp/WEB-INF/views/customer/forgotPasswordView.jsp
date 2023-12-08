@@ -29,7 +29,7 @@
 				<input type="email" class="form-control" id="email"
 					placeholder="Email" name="email" value="${email}" required> <label for="email">Email <span class="red">*</span></label>
 			</div>
-			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Gữi mã</button>
+			<button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Gửi mã</button>
 		</form>
 		
 		<form class="text-center" action="forgot-password" method="post">
