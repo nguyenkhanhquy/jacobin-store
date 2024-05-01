@@ -89,7 +89,7 @@
             document.getElementById('dienThoai').removeAttribute('disabled');
 
             document.getElementById('edit-btn').setAttribute('disabled', 'true');
-            document.getElementById('save-btn').removeAttribute('disabled');;
+            document.getElementById('save-btn').removeAttribute('disabled');
         });
     </script>
     
