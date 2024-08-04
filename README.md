@@ -1,6 +1,6 @@
 # Jacobin Store
 
-Final term project of the "Web Programming" course - Jacobin Store
+Experience a seamless online fashion shopping journey with our modern e-commerce platform, built using JSP, Servlet, and MySQL as Database
 
 ## Table of Contents
 
