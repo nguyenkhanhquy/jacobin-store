@@ -32,3 +32,7 @@ Experience a seamless online fashion shopping journey with our modern e-commerce
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/nguyenkhanhquy/jacobin-store/blob/main/LICENSE) file for details.
+
+## References
+
+- [Project Jacobin Store Spring Boot](https://github.com/nguyenkhanhquy/jacobin-store-spring-boot)
