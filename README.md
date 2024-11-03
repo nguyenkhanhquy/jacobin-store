@@ -8,6 +8,7 @@ Experience a seamless online fashion shopping journey with our modern e-commerce
 1. [Technology Stack](#technology-stack)
 1. [Author](#author)
 1. [License](#license)
+1. [References](#references)
 
 ## Prerequisites
 
