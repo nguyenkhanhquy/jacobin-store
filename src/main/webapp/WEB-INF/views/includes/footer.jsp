@@ -9,5 +9,5 @@
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Liên hệ</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Blogs</a></li>
     </ul>
-    <p class="text-center text-muted">&copy; 2023 Jacobin.com</p>
+    <p class="text-center text-muted">&copy; 2023 Jacobin.live</p>
 </footer>
